@@ -29,7 +29,7 @@ export default ({ navigation }: IDrawerProps) => (
       title="Lämna synpunkter"
       style={{ elevation: 1 }}
       onPress={() => {
-        navigation.navigate('Dashboard')
+        navigation.navigate('Review')
         navigation.toggleDrawer()
       }}
     />

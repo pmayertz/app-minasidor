@@ -9,10 +9,12 @@ import Dashboard from '../screens/Dashboard'
 import Login from '../screens/Login'
 import Drawer from './Drawer'
 import PaymentDetails from '../screens/PaymentDetails'
+import Review from '../screens/Review'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import { Platform } from 'react-native';
 
 const DashboardStack = createStackNavigator(
-  { Dashboard, PaymentDetails },
+  { Dashboard, PaymentDetails, Review },
   {
     headerMode: 'float',
     navigationOptions: {
@@ -21,7 +23,9 @@ const DashboardStack = createStackNavigator(
       headerStyle: {
         backgroundColor: '#DCE7F1',
         elevation: 0,
-        height: 44,
+        shadowOpacity: 0,
+        height: 20,
+        borderBottomWidth: 0,
       }
     }
   }
@@ -54,9 +58,10 @@ const AppStack = createStackNavigator(
       headerStyle: {
         color: 'white',
         backgroundColor: '#116A3E',
-        borderColor: '#0c4f2d',
+        borderBottomColor: '#0c4f2d',
         borderBottomWidth: 2,
-        elevation: 6
+        elevation: 6,
+        height: Platform.OS === 'ios' ? 68 : 58 ,
       },
       headerTintColor: '#EEEEEE',
       headerTitleStyle: {
