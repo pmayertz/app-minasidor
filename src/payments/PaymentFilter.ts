@@ -12,7 +12,7 @@ export class PaymentFilter {
   }
 
   public static nextPayment(payments: IPayments): IPayment[] {
-    if (payments.klara.length > 0 || payments.preliminara.length > 0) {
+    if (payments && (payments.klara.length > 0 || payments.preliminara.length > 0)) {
       let mappedPayments = payments.preliminara.map(p => {
         p.status = 'PREL'
         return p

@@ -4,6 +4,7 @@ import { NavigationScreenProp } from 'react-navigation'
 import PaymentCircle from '../components/PaymentCircle'
 import * as Rest from '../Rest'
 import { PaymentFilter } from '../payments/PaymentFilter'
+import NavigationButton from '../components/NavigationButton';
 
 interface IProps {
   navigation: NavigationScreenProp<{}, {}>
@@ -14,15 +15,15 @@ interface IState {
 }
 
 export default class Dashboard extends React.Component<IProps, IState> {
+  private static navigationOptions = {
+    header: null
+  }
+
   constructor(props: IProps) {
     super(props)
     this.state = {
       payments: {klara: [], preliminara: [],tidigare: []}
     }
-  }
-
-  private static navigationOptions = {
-    header: null
   }
 
   public render() {
@@ -32,8 +33,17 @@ export default class Dashboard extends React.Component<IProps, IState> {
           nextPayment={PaymentFilter.nextPaymentSum(this.state.payments)}
           onPress={() => this.navigateToPaymentDetail()}
         />
+        <View style={{ marginVertical: 16, marginHorizontal: 8 }}>
+          <NavigationButton title="Ärenden" icon="folder-open" onPress={() => this.navigateToPayments()}/>
+          <NavigationButton title="Föräldrapenning" icon="child" onPress={() => this.navigateToPayments()}/>
+          <NavigationButton title="Utbetalningar" icon="university" onPress={() => this.navigateToPayments()}/>
+        </View>
       </View>
     )
+  }
+
+  private navigateToPayments() {
+    this.props.navigation.navigate('Payments', { payments: this.state.payments})
   }
 
   private navigateToPaymentDetail() {
@@ -41,23 +51,16 @@ export default class Dashboard extends React.Component<IProps, IState> {
   }
 
   public componentDidMount = () => {
-    this.setState({ payments: {klara: [
-        {nettobelopp: 5129, datum: "2018-10-28", detaljer: [], specifikation: 1, status: "", utbetalningsfamilj: "", utbetalningsfamiljKlartext: ""},
-        {nettobelopp: 5129, datum: "2018-10-28", detaljer: [], specifikation: 1, status: "", utbetalningsfamilj: "", utbetalningsfamiljKlartext: ""},
-      ], preliminara: [
-        {nettobelopp: 5129, datum: "2018-10-28", detaljer: [], specifikation: 1, status: "", utbetalningsfamilj: "", utbetalningsfamiljKlartext: ""},
-        {nettobelopp: 5129, datum: "2018-10-28", detaljer: [], specifikation: 1, status: "", utbetalningsfamilj: "", utbetalningsfamiljKlartext: ""},
-      ], tidigare: [
-        {nettobelopp: 5129, datum: "2018-10-28", detaljer: [], specifikation: 1, status: "", utbetalningsfamilj: "", utbetalningsfamiljKlartext: ""},
-        {nettobelopp: 5129, datum: "2018-10-28", detaljer: [], specifikation: 1, status: "", utbetalningsfamilj: "", utbetalningsfamiljKlartext: ""},
-      ]} })
-    // Rest.getUtbetalningar()
-    //   .then((responseBody: IPayments) => {
-    //     this.setState({ payments: responseBody })
-    //   })
-    //   .catch(error => {
-    //     throw new Error(error)
-    //   })
+    // this.setState({ payments: {klara: [{nettobelopp: 5129, datum: "2018-10-28", detaljer: [], specifikation: 1, status: "", utbetalningsfamilj: "", utbetalningsfamiljKlartext: ""}], preliminara: [], tidigare: []} })
+    Rest.getUtbetalningar()
+      .then((responseBody: IPayments) => {
+        this.setState({ payments: responseBody })
+      })
+      .catch(error => {
+        if (error instanceof Rest.AuthenticationError) {
+          this.props.navigation.navigate('Auth')
+        }
+      })
   }
 }
 

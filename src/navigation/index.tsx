@@ -7,14 +7,25 @@ import {
 import AuthLoading from '../screens/AuthLoading'
 import Dashboard from '../screens/Dashboard'
 import Login from '../screens/Login'
+import Payments from '../screens/Payments'
 import Drawer from './Drawer'
 import PaymentDetails from '../screens/PaymentDetails'
 import Review from '../screens/Review'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { Platform } from 'react-native'
 
+const PaymentsStack = createStackNavigator(
+  {
+    Payments,
+    PaymentDetails
+  },
+  {
+    headerMode: 'none'
+  }
+)
+
 const DashboardStack = createStackNavigator(
-  { Dashboard, PaymentDetails, Review },
+  { Dashboard, PaymentsStack, Review },
   {
     headerMode: 'float',
     navigationOptions: {
@@ -35,6 +46,7 @@ const DashboardStack = createStackNavigator(
     }
   }
 )
+
 const DrawerStack = createDrawerNavigator(
   { DashboardStack },
   { contentComponent: Drawer }

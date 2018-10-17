@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   amount: {
     padding: 10,
     borderColor: '#0c4f2d',
-    borderBottomWidth: 2
+    borderBottomWidth: 2,
   },
   date: {
     padding: 10
