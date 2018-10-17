@@ -12,7 +12,8 @@ export default StyleSheet.create({
     marginBottom: 8
   },
   child: {
-    marginVertical: 8
+    marginVertical: 8,
+    elevation: 1,
   },
   invalid: {
     borderWidth: 2,

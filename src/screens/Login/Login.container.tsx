@@ -3,7 +3,10 @@ import {
   AsyncStorage,
   DeviceEventEmitter,
   DeviceEventEmitterStatic,
-  EmitterSubscription
+  EmitterSubscription,
+  Platform,
+  Linking,
+  Alert
 } from 'react-native'
 import { BANKID_RESPONSE_KEY } from '../../resources/communication'
 import BankID from '../../BankID'
@@ -41,33 +44,46 @@ export default class LoginContainer extends React.Component<IProps, IState> {
     return object.meddelande.substring(13, object.meddelande.length - 14)
   }
 
+  private handleUrlResponse = (url: { url: string }) => {
+    if (url.url.includes(BANKID_RESPONSE_KEY)) {
+      this.finalizeLogin()
+    }
+  }
+
   public componentDidMount() {
-    this.onBankIDResponse = DeviceEventEmitter.addListener(
-      BANKID_RESPONSE_KEY,
-      () => {
-        Rest.postLaunchResponse()
-          .then(response => {
-            if (response.type === 'pollresponse') {
-              throw new Error('Felaktig inloggning')
-            }
+    if (Platform.OS === 'ios') {
+      Linking.addEventListener('url', this.handleUrlResponse);
+    } else {
+      this.onBankIDResponse = DeviceEventEmitter.addListener(
+        BANKID_RESPONSE_KEY,
+        () => this.finalizeLogin()
+      )
+    }
+  }
 
-            if (response.status) {
-              throw new Error('Felaktig inloggning')
-            }
+  private finalizeLogin() {
+    Rest.postLaunchResponse()
+      .then(response => {
+        if (response.type === 'pollresponse') {
+          throw new Error('Felaktig inloggning')
+        }
 
-            this.props.navigation.navigate('App', {
-              fullname: this.getName(response)
-            })
-          })
-          .catch(_ => {
-            this.setState({ isLoading: false })
-          })
-      }
-    )
+        if (response.status) {
+          throw new Error('Felaktig inloggning')
+        }
+
+        this.props.navigation.navigate('App', {
+          fullname: this.getName(response)
+        })
+      })
+      .catch(_ => {
+        this.setState({ isLoading: false })
+      })
   }
 
   public componentWillUnmount() {
     this.onBankIDResponse && this.onBankIDResponse.remove()
+    Linking.removeEventListener('url', this.handleUrlResponse);
   }
 
   public render() {
@@ -102,10 +118,51 @@ export default class LoginContainer extends React.Component<IProps, IState> {
 
     Rest.login()
       .then(_ => Rest.postFormResponse(personalNumber.replace('-', '')))
-      .then(_ => BankID.start())
+      .then(_ => {
+        Linking.canOpenURL('bankid://')
+          .then((supported: boolean) => {
+            if (!supported) {
+              this.alertToInstallBankID()
+            } else {
+              BankID.start()
+            }
+          })
+          .catch(error => console.error(error))
+      })
       .catch(_ => {
         this.setState({ isLoading: false })
       })
+  }
+
+  private alertToInstallBankID() {
+    Alert.alert(
+      'Kräver inloggning med Mobilt BankID',
+      'För att kunna logga in krävs BankIDs säkerhetsapp. Vill du ladda ner appen nu?',
+      [
+        {
+          text: 'Nej',
+          onPress: () => {
+            this.setState({ isLoading: false })
+            return
+          }
+        },
+        {
+          text: 'Ja',
+          onPress: () => {
+            const url =
+              Platform.OS === 'ios'
+                ? 'itms-apps://itunes.com/apps/bankidsakerhetsapp'
+                : 'market://details?id=com.bankid.bus'
+            Linking.openURL(url)
+              .then(() => {
+                return
+              })
+              .catch(error => console.log(error))
+          }
+        }
+      ],
+      { cancelable: false }
+    )
   }
 
   private setError(title: string, subtitle: string) {
