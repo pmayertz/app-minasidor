@@ -11,21 +11,26 @@ import Drawer from './Drawer'
 import PaymentDetails from '../screens/PaymentDetails'
 import Review from '../screens/Review'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { Platform } from 'react-native';
+import { Platform } from 'react-native'
 
 const DashboardStack = createStackNavigator(
   { Dashboard, PaymentDetails, Review },
   {
     headerMode: 'float',
     navigationOptions: {
+      headerForceInset: { top: 'never', bottom: 'never' },
       title: '',
       headerBackTitle: 'Tillbaka',
       headerStyle: {
         backgroundColor: '#DCE7F1',
         elevation: 0,
         shadowOpacity: 0,
-        height: 20,
-        borderBottomWidth: 0,
+        borderBottomWidth: 0
+      },
+      headerBackTitleStyle: {
+        alignContent: 'center',
+        alignItems: 'center',
+        justifyContent: 'center'
       }
     }
   }
@@ -61,7 +66,7 @@ const AppStack = createStackNavigator(
         borderBottomColor: '#0c4f2d',
         borderBottomWidth: 2,
         elevation: 6,
-        height: Platform.OS === 'ios' ? 68 : 58 ,
+        height: Platform.OS === 'ios' ? 68 : 58
       },
       headerTintColor: '#EEEEEE',
       headerTitleStyle: {

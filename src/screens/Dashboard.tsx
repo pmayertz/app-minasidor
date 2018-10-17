@@ -41,14 +41,23 @@ export default class Dashboard extends React.Component<IProps, IState> {
   }
 
   public componentDidMount = () => {
-    // this.setState({ payments: {klara: [{nettobelopp: 5129, datum: "2018-10-28", detaljer: [], specifikation: 1, status: "", utbetalningsfamilj: "", utbetalningsfamiljKlartext: ""}], preliminara: [], tidigare: []} })
-    Rest.getUtbetalningar()
-      .then((responseBody: IPayments) => {
-        this.setState({ payments: responseBody })
-      })
-      .catch(error => {
-        throw new Error(error)
-      })
+    this.setState({ payments: {klara: [
+        {nettobelopp: 5129, datum: "2018-10-28", detaljer: [], specifikation: 1, status: "", utbetalningsfamilj: "", utbetalningsfamiljKlartext: ""},
+        {nettobelopp: 5129, datum: "2018-10-28", detaljer: [], specifikation: 1, status: "", utbetalningsfamilj: "", utbetalningsfamiljKlartext: ""},
+      ], preliminara: [
+        {nettobelopp: 5129, datum: "2018-10-28", detaljer: [], specifikation: 1, status: "", utbetalningsfamilj: "", utbetalningsfamiljKlartext: ""},
+        {nettobelopp: 5129, datum: "2018-10-28", detaljer: [], specifikation: 1, status: "", utbetalningsfamilj: "", utbetalningsfamiljKlartext: ""},
+      ], tidigare: [
+        {nettobelopp: 5129, datum: "2018-10-28", detaljer: [], specifikation: 1, status: "", utbetalningsfamilj: "", utbetalningsfamiljKlartext: ""},
+        {nettobelopp: 5129, datum: "2018-10-28", detaljer: [], specifikation: 1, status: "", utbetalningsfamilj: "", utbetalningsfamiljKlartext: ""},
+      ]} })
+    // Rest.getUtbetalningar()
+    //   .then((responseBody: IPayments) => {
+    //     this.setState({ payments: responseBody })
+    //   })
+    //   .catch(error => {
+    //     throw new Error(error)
+    //   })
   }
 }
 
