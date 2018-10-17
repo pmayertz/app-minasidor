@@ -1,22 +1,33 @@
 import React from 'react'
-import { View, StyleSheet, Text, Picker } from 'react-native'
+import { View, StyleSheet, Text, Picker, ScrollView, Alert } from 'react-native'
 import TextInput from '../components/TextInput'
+import Button from '../components/Button'
+import * as Rest from '../Rest'
+import { NavigationScreenProp } from 'react-navigation';
+
+interface IReviewProps {
+  navigation: NavigationScreenProp<{}, {}>
+}
 
 interface IReviewState {
   score: number
+  message: string
+  status: boolean
 }
 
-export default class Review extends React.Component<{}, IReviewState> {
-  constructor(props: object) {
+export default class Review extends React.Component<IReviewProps, IReviewState> {
+  constructor(props: IReviewProps) {
     super(props)
     this.state = {
-      score: 1
+      score: 1,
+      message: '',
+      status: true
     }
   }
 
   public render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container} keyboardShouldPersistTaps="always">
         <View style={styles.review}>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>Lämna synpunkter</Text>
@@ -30,7 +41,7 @@ export default class Review extends React.Component<{}, IReviewState> {
               Hur troligt är det att du rekomenderar denna applikation till
               andra?
             </Text>
-            <Text>0 = Inte troligt, 5 = Väldigt troligt</Text>
+            <Text>1 = Inte troligt, 5 = Väldigt troligt</Text>
             <Picker
               selectedValue={this.state.score}
               onValueChange={(itemValue, itemIndex) =>
@@ -47,11 +58,38 @@ export default class Review extends React.Component<{}, IReviewState> {
 
           <View style={styles.commentContainer}>
             <Text style={styles.boldText}>Vad tycker du om applikationen?</Text>
-            <Text>Lämna synpunkter på befintliga funktioner eller funktioner som du vill se i kommande versioner.</Text>
-            <TextInput multiline={true} style={styles.comment}/>
+            <Text>
+              Lämna synpunkter på befintliga funktioner eller funktioner som du
+              vill se i kommande versioner.
+            </Text>
+            <TextInput
+              style={styles.comment}
+              onChangeText={(message: string) => this.setState({ message })}
+            />
           </View>
+          <Button title="Skicka" onPress={() => this.sendFeedback()} />
         </View>
-      </View>
+      </ScrollView>
+    )
+  }
+  
+  private sendFeedback() {
+    Rest.skickaEpost(this.state.score, this.state.message)
+      .then(() => {
+        this.setState({ status: true })
+        this.alertSuccess()
+        this.props.navigation.navigate('Dashboard')
+      })
+      .catch(() => {
+        this.setState({ status: false })
+        // TODO visa felmeddelande
+      })
+  }
+
+  private alertSuccess() {
+    Alert.alert(
+      'Synpunkt skickad',
+      'Tack! Vi har nu tagit emot dina synpunkter.'
     )
   }
 }
@@ -65,7 +103,7 @@ const styles = StyleSheet.create({
   review: {
     marginHorizontal: 10,
     marginBottom: 10,
-    padding: 5,
+    padding: 15,
     backgroundColor: '#FFFFFF',
 
     shadowColor: '#000',
@@ -85,15 +123,15 @@ const styles = StyleSheet.create({
   titleContainer: {
     borderBottomColor: '#000000',
     borderBottomWidth: 1,
-    padding: 10
+    paddingVertical: 10
   },
   scoreContainer: {
     borderBottomColor: '#000000',
     borderBottomWidth: 1,
-    padding: 10
+    paddingVertical: 10
   },
   commentContainer: {
-    padding: 10
+    paddingVertical: 10
   },
 
   boldText: {

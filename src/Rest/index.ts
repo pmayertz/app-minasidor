@@ -115,3 +115,21 @@ export function getUtbetalningar() {
       throw new Error(error)
     })
 }
+
+export function skickaEpost(score: number, meddelande: string) {
+  const email = {
+    meddelandeSomSkickas: `${score}, ${meddelande}`,
+    mottagare: 'skickaepost.app.omrade.val',
+    avsandare: 'app@fk.se'
+  }
+
+  return fetch(`${SKICKAEPOSTREST_URL}/epost?${KANAL}`, {
+    method: 'POST',
+    headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify(email)
+  })
+  .catch(error => {
+    throw new Error(error)
+  })
+}
