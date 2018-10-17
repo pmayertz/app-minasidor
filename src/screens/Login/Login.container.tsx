@@ -77,6 +77,7 @@ export default class LoginContainer extends React.Component<IProps, IState> {
         })
       })
       .catch(_ => {
+        this.setError('Inloggningen misslyckades', 'Det har uppstått ett problem med inloggningen, var god försök igen')
         this.setState({ isLoading: false })
       })
   }
@@ -109,7 +110,7 @@ export default class LoginContainer extends React.Component<IProps, IState> {
 
   private login(personalNumber: string) {
     if (invalidPersonalNumber(personalNumber)) {
-      this.setError('Ett fel har inträffat', 'Fel format på personnummer')
+      this.setError('Fel format på personnummer', 'Personnummer bör skrivas i format ååååddmm-nnnn')
       this.setState({ invalidField: true })
       return
     }
@@ -127,9 +128,10 @@ export default class LoginContainer extends React.Component<IProps, IState> {
               BankID.start()
             }
           })
-          .catch(error => console.error(error))
+          .catch(_ => this.alertToInstallBankID)
       })
       .catch(_ => {
+        this.setError('Inloggningen misslyckades', 'Det har uppstått ett problem med inloggningen, var god försök igen')
         this.setState({ isLoading: false })
       })
   }
@@ -157,7 +159,7 @@ export default class LoginContainer extends React.Component<IProps, IState> {
               .then(() => {
                 return
               })
-              .catch(error => console.log(error))
+              .catch(_ => this.setError('Något gick fel', 'Var god försök igen'))
           }
         }
       ],
