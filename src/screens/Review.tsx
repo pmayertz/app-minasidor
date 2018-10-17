@@ -3,7 +3,8 @@ import { View, StyleSheet, Text, Picker, ScrollView, Alert } from 'react-native'
 import TextInput from '../components/TextInput'
 import Button from '../components/Button'
 import * as Rest from '../Rest'
-import { NavigationScreenProp } from 'react-navigation';
+import { NavigationScreenProp } from 'react-navigation'
+import ErrorDialog, { IError } from '../components/ErrorDialog'
 
 interface IReviewProps {
   navigation: NavigationScreenProp<{}, {}>
@@ -12,16 +13,19 @@ interface IReviewProps {
 interface IReviewState {
   score: number
   message: string
-  status: boolean
+  error: IError
 }
 
-export default class Review extends React.Component<IReviewProps, IReviewState> {
+export default class Review extends React.Component<
+  IReviewProps,
+  IReviewState
+> {
   constructor(props: IReviewProps) {
     super(props)
     this.state = {
       score: 1,
       message: '',
-      status: true
+      error: null
     }
   }
 
@@ -68,11 +72,12 @@ export default class Review extends React.Component<IReviewProps, IReviewState> 
             />
           </View>
           <Button title="Skicka" onPress={() => this.sendFeedback()} />
+          <ErrorDialog error={this.state.error} />
         </View>
       </ScrollView>
     )
   }
-  
+
   private sendFeedback() {
     Rest.skickaEpost(this.state.score, this.state.message)
       .then(() => {
@@ -81,8 +86,14 @@ export default class Review extends React.Component<IReviewProps, IReviewState> 
         this.props.navigation.navigate('Dashboard')
       })
       .catch(() => {
-        this.setState({ status: false })
-        // TODO visa felmeddelande
+        this.setState({
+          error: {
+            title: 'Kunde inte skicka',
+            subtitle:
+              'Vi kan tyvärr inte ta emot dina synpunkter just nu. Försöker igen senare',
+            onClose: () => this.setState({ error: null })
+          }
+        })
       })
   }
 
