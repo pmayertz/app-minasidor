@@ -3,7 +3,7 @@ import { TouchableHighlight, Text, StyleSheet, View, TouchableOpacity } from 're
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 interface IButtonProps {
-  title: string
+  title?: string
   icon?: string
   onPress(): void
   style?: object
@@ -22,7 +22,6 @@ const defaultStyles = StyleSheet.create({
   },
   text: {
     color: '#EEEEEE',
-    textTransform: 'uppercase',
     fontWeight: 'bold',
     textAlign: 'center',
     fontSize: 16
@@ -37,7 +36,7 @@ export default ({ title, icon, onPress, style, fontStyle, iconStyle }: IButtonPr
   <TouchableOpacity activeOpacity={0.6} onPress={onPress} style={[defaultStyles.button, style]}>
     <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
       {icon && (<Icon name={icon} size={40} style={[defaultStyles.icon, iconStyle]} />)}
-      <Text style={[defaultStyles.text, fontStyle]}>{title.toUpperCase()}</Text>
+      <Text style={[defaultStyles.text, fontStyle]}>{title}</Text>
     </View>
   </TouchableOpacity>
 )
