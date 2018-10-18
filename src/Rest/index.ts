@@ -28,7 +28,7 @@ export function login() {
       return response.json()
     })
     .catch(error => {
-      throw new Error(error)
+      throw error
     })
 }
 
@@ -43,7 +43,7 @@ export function logout() {
       return
     })
     .catch(error => {
-      throw new Error(error)
+      throw error
     })
 }
 
@@ -73,7 +73,7 @@ export function postFormResponse(personalNumber: string) {
       return response.json()
     })
     .catch(error => {
-      throw new Error(error)
+      throw error
     })
 }
 
@@ -97,7 +97,7 @@ export function postLaunchResponse() {
       return response.json()
     })
     .catch(error => {
-      throw new Error(error)
+      throw error
     })
 }
 
@@ -111,8 +111,14 @@ export function getUtbetalningar() {
       }
       return response.json()
     })
+    .then(jsonResponse => {
+      if (jsonResponse.type === 'formrequest') {
+        throw new AuthenticationError('Not logged in')
+      }
+      return jsonResponse
+    })
     .catch(error => {
-      throw new Error(error)
+      throw error
     })
 }
 
@@ -131,6 +137,13 @@ export function skickaEpost(score: number, meddelande: string) {
   }).catch(error => {
     throw new Error(error)
   })
+}
+
+export class AuthenticationError extends Error {
+  constructor(message: string) {
+    super(message)
+    Object.setPrototypeOf(this, AuthenticationError.prototype)
+  }
 }
 
 export function getPdf(specification: number) {

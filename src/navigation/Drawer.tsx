@@ -17,19 +17,10 @@ export default ({ navigation }: IDrawerProps) => (
     </View>
     <MenuItem
       icon="archive"
-      title="Utbetalningar"
-      style={{ elevation: 2}}
+      title="Översikt"
+      style={{ elevation: 1}}
       onPress={() => {
         navigation.navigate('Dashboard')
-        navigation.toggleDrawer()
-      }}
-    />
-    <MenuItem
-      icon="commenting"
-      title="Lämna synpunkter"
-      style={{ elevation: 1 }}
-      onPress={() => {
-        navigation.navigate('Review')
         navigation.toggleDrawer()
       }}
     />
@@ -55,7 +46,7 @@ const styles = StyleSheet.create({
     padding: 8,
     backgroundColor: '#116A3E',
     alignItems: 'center',
-    elevation: 3
+    elevation: 2
   },
   placeholder: {
     width: 140,
