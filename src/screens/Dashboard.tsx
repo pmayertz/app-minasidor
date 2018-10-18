@@ -79,9 +79,14 @@ export default class Dashboard extends React.Component<IProps, IState> {
       <ScrollView bounces={false} style={styles.container}>
         <PaymentCircle
           nextPayment={PaymentFilter.nextPaymentSum(this.state.payments)}
-          onPress={() => this.navigateToPaymentDetail()}
+          onPress={() => this.navigateToPayments()}
         />
         <View style={{ marginVertical: 16, marginHorizontal: 8 }}>
+          <NavigationButton
+            title="Utbetalningar"
+            icon="account-balance"
+            onPress={() => this.navigateToPayments()}
+          />
           <NavigationButton
             title="Ärenden"
             icon="folder-shared"
@@ -90,11 +95,6 @@ export default class Dashboard extends React.Component<IProps, IState> {
           <NavigationButton
             title="Föräldrapenning"
             icon="child-friendly"
-            onPress={() => this.navigateToPayments()}
-          />
-          <NavigationButton
-            title="Utbetalningar"
-            icon="account-balance"
             onPress={() => this.navigateToPayments()}
           />
           <Text
@@ -149,10 +149,10 @@ export default class Dashboard extends React.Component<IProps, IState> {
   }
 
   private async hasGivenFeedback() {
-    const hasGivenFeedback = await AsyncStorage.getItem('hasGivenFeedback');
-    if ( hasGivenFeedback ) {
+    const hasGivenFeedback = await AsyncStorage.getItem('hasGivenFeedback')
+    if (hasGivenFeedback) {
       this.setState({ hasGivenFeedback: true })
-    } 
+    }
   }
 
   private leaveFeedback(rating: number) {

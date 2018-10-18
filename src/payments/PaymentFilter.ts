@@ -11,18 +11,39 @@ export class PaymentFilter {
     }
   }
 
-  public static nextPayment(payments: IPayments): IPayment[] {
-    if (payments && (payments.klara.length > 0 || payments.preliminara.length > 0)) {
-      let mappedPayments = payments.preliminara.map(p => {
-        p.status = 'PREL'
+  public static concatPrelAndDone(payments: IPayments): IPayment[] {
+    let mappedPayments = payments.preliminara.map(p => {
+      p.status = 'PREL'
+      return p
+    })
+    mappedPayments = mappedPayments.concat(
+      payments.klara.map(p => {
+        p.status = 'KLAR'
         return p
       })
-      mappedPayments = mappedPayments.concat(
-        payments.klara.map(p => {
-          p.status = 'KLAR'
-          return p
-        })
-      )
+    )
+
+    return mappedPayments
+  }
+
+  public static sortByDate(payments: IPayment[]): IPayment[] {
+    return payments.sort((first, second) => {
+      if (first.datum < second.datum) {
+        return -1
+      }
+      if (first.datum > second.datum) {
+        return 1
+      }
+      return 0
+    })
+  }
+
+  public static nextPayment(payments: IPayments): IPayment[] {
+    if (
+      payments &&
+      (payments.klara.length > 0 || payments.preliminara.length > 0)
+    ) {
+      const mappedPayments = this.concatPrelAndDone(payments)
 
       const earliestPayment = mappedPayments.reduce((earliestDate, p) => {
         if (earliestDate.datum > p.datum) {

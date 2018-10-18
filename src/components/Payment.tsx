@@ -1,11 +1,65 @@
 import React from 'react'
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialIcons'
+import Card from './Card';
 
+interface IPaymentProps {
+  payment: IPayment
+}
 
-export default (item: IPayment) => (
-  <View style={{ backgroundColor: 'white' }}>
-    <Text>{item.specifikation}</Text>
-    <Text>{item.datum}</Text>
-    <Text>{item.nettobelopp} kr</Text>
-  </View>
+export default ({ payment }: IPaymentProps) => (
+  <Card style={styles.container}>
+    <View
+      style={[
+        styles.colorBar,
+        payment.status === 'KLAR' && { backgroundColor: '#669933' },
+        payment.status === 'PREL' && { backgroundColor: '#FF9900' }
+      ]}
+    >
+      <Icon name="chevron-right" size={28} color="white" />
+    </View>
+    <View style={styles.infoContainer}>
+      <View style={styles.amountContainer}>
+        <Text style={styles.amount}>{payment.nettobelopp}</Text>
+        <Text style={{ fontWeight: 'bold' }}> kr</Text>
+      </View>
+      <Text style={styles.defaultText}>{payment.datum}</Text>
+      <View style={styles.divider} />
+      {payment.detaljer.map((detalj, key) => (
+        <Text key={key}>{detalj.delformanKlartext}</Text>
+      ))}
+    </View>
+  </Card>
 )
+
+const styles = StyleSheet.create({
+  container: {
+    marginVertical: 4,
+    flexDirection: 'row'
+  },
+  infoContainer: {
+    paddingHorizontal: 8,
+    paddingVertical: 16,
+    flex: 1
+  },
+  amountContainer: {
+    flexDirection: 'row',
+    alignItems: 'flex-end'
+  },
+  amount: {
+    fontSize: 32,
+    fontWeight: 'bold'
+  },
+  defaultText: {
+    fontSize: 18
+  },
+  divider: {
+    borderWidth: 1,
+    opacity: 0.4,
+    marginBottom: 8
+  },
+  colorBar: {
+    justifyContent: 'center',
+    backgroundColor: 'grey'
+  }
+})
