@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from '../../components/Container'
-import { View, Text, StatusBar } from 'react-native'
+import { View, Text, StatusBar, Image } from 'react-native'
 import TextInput from '../../components/TextInput'
 import Button from '../../components/Button'
 import styles from './styles'
@@ -19,12 +19,12 @@ interface ILoginContainerProps {
 
 export default (props: ILoginContainerProps) => (
   <View style={{ flex: 1 }}>
-    <View>
-      <StatusBar barStyle="dark-content" />
-    </View>
-
     <Container>
       <View style={styles.logoContainer} />
+      <Image
+        style={{ width: 300, height: 300, alignSelf: 'center' }}
+        source={require('./fk-logo.jpg')}
+      />
       <Text style={styles.title}>{strings.LOGIN_BANKID}</Text>
       <Text style={styles.label}>{strings.FILL_PERSONAL_NUMBER}</Text>
       <TextInput
@@ -42,10 +42,11 @@ export default (props: ILoginContainerProps) => (
       <Button
         title={strings.LOGIN}
         onPress={() => props.login()}
-        style={styles.child}
+        style={[styles.child, styles.loginButton]}
       />
     </Container>
     <Loading isLoading={props.isLoading} />
     <ErrorDialog error={props.error} />
+    <StatusBar backgroundColor="#007D46" />
   </View>
 )

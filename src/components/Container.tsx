@@ -11,7 +11,7 @@ const defaultStyles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 16,
     paddingVertical: 16,
-    backgroundColor: '#DCE7F1'
+    backgroundColor: '#007D46'
   }
 })
 
