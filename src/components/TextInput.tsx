@@ -1,7 +1,7 @@
 import React from 'react'
-import { TextInput as DefaultTextInput, StyleSheet } from 'react-native'
+import { TextInput as DefaultTextInput, StyleSheet, TextInputProperties } from 'react-native'
 
-interface ITextInputProps {
+interface ITextInputProps extends TextInputProperties {
   style?: object
 }
 

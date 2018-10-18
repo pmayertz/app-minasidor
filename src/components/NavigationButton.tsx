@@ -6,7 +6,7 @@ import {
   View,
   TouchableOpacity
 } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 interface INavigationButtonProps {
   title: string
@@ -22,7 +22,7 @@ const defaultStyles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 24,
     width: '100%',
-    elevation: 1,
+    elevation: 4,
     shadowOffset: { width: 1, height: 1 },
     shadowColor: '#000000',
     shadowOpacity: 0.2,
@@ -51,7 +51,7 @@ export default ({
       <Icon name={icon} size={50} />
       <Text style={defaultStyles.text}>{title}</Text>
       <Icon
-        name="angle-right"
+        name="chevron-right"
         size={40}
         style={{ alignSelf: 'center', marginLeft: 'auto' }}
       />

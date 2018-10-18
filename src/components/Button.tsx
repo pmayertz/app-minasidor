@@ -1,11 +1,14 @@
 import React from 'react'
-import { TouchableHighlight, Text, StyleSheet } from 'react-native'
+import { TouchableHighlight, Text, StyleSheet, View, TouchableOpacity } from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 interface IButtonProps {
   title: string
+  icon?: string
   onPress(): void
   style?: object
   fontStyle?: object
+  iconStyle?: object
 }
 
 const defaultStyles = StyleSheet.create({
@@ -14,18 +17,27 @@ const defaultStyles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 16,
     width: '100%',
-    borderRadius: 8
+    borderRadius: 8,
+    elevation: 1,
   },
   text: {
     color: '#EEEEEE',
     textTransform: 'uppercase',
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize: 16
+  },
+  icon: {
+    paddingHorizontal: 8,
+    color: '#EEEEEE'
   }
 })
 
-export default ({ title, onPress, style, fontStyle }: IButtonProps) => (
-  <TouchableHighlight onPress={onPress} style={[defaultStyles.button, style]}>
-    <Text style={[defaultStyles.text, fontStyle]}>{title.toUpperCase()}</Text>
-  </TouchableHighlight>
+export default ({ title, icon, onPress, style, fontStyle, iconStyle }: IButtonProps) => (
+  <TouchableOpacity activeOpacity={0.6} onPress={onPress} style={[defaultStyles.button, style]}>
+    <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+      {icon && (<Icon name={icon} size={40} style={[defaultStyles.icon, iconStyle]} />)}
+      <Text style={[defaultStyles.text, fontStyle]}>{title.toUpperCase()}</Text>
+    </View>
+  </TouchableOpacity>
 )

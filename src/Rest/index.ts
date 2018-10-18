@@ -134,9 +134,10 @@ export function skickaEpost(score: number, meddelande: string) {
     headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
     credentials: 'include',
     body: JSON.stringify(email)
-  }).catch(error => {
-    throw new Error(error)
   })
+  .catch(error => {
+    throw new Error(error)
+})
 }
 
 export class AuthenticationError extends Error {

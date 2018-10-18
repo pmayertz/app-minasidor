@@ -13,7 +13,7 @@ interface IReviewProps {
 interface IReviewState {
   score: number
   message: string
-  error: IError
+  error?: IError 
 }
 
 export default class Review extends React.Component<
@@ -25,7 +25,7 @@ export default class Review extends React.Component<
     this.state = {
       score: 1,
       message: '',
-      error: null
+      error: undefined
     }
   }
 
@@ -81,7 +81,6 @@ export default class Review extends React.Component<
   private sendFeedback() {
     Rest.skickaEpost(this.state.score, this.state.message)
       .then(() => {
-        this.setState({ status: true })
         this.alertSuccess()
         this.props.navigation.navigate('Dashboard')
       })
@@ -91,7 +90,7 @@ export default class Review extends React.Component<
             title: 'Kunde inte skicka',
             subtitle:
               'Vi kan tyvärr inte ta emot dina synpunkter just nu. Försöker igen senare',
-            onClose: () => this.setState({ error: null })
+            onClose: () => this.setState({ error: undefined })
           }
         })
       })
