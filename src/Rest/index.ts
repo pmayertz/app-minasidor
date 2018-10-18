@@ -1,10 +1,10 @@
-import * as CONSTANTS from '../../CONSTANTS';
+import * as CONSTANTS from '../../CONSTANTS'
 const KANAL = 'kanal=3'
 
-let AUTH_URL = CONSTANTS.PROD_URL.AUTH;
-let MISIREST_URL = CONSTANTS.PROD_URL.MISIREST;
-let UTBREST_URL = CONSTANTS.PROD_URL.UTBREST;
-let SKICKAEPOSTREST_URL = CONSTANTS.PROD_URL.SKICKAEPOSTREST;
+let AUTH_URL = CONSTANTS.PROD_URL.AUTH
+let MISIREST_URL = CONSTANTS.PROD_URL.MISIREST
+let UTBREST_URL = CONSTANTS.PROD_URL.UTBREST
+let SKICKAEPOSTREST_URL = CONSTANTS.PROD_URL.SKICKAEPOSTREST
 
 if (__DEV__) {
   AUTH_URL = CONSTANTS.TEST_URL.AUTH
@@ -128,8 +128,11 @@ export function skickaEpost(score: number, meddelande: string) {
     headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
     credentials: 'include',
     body: JSON.stringify(email)
-  })
-  .catch(error => {
+  }).catch(error => {
     throw new Error(error)
   })
+}
+
+export function getPdf(specification: number) {
+  return `${UTBREST_URL}/utbetalningar/specifikation?id=${specification}&${KANAL}`
 }
