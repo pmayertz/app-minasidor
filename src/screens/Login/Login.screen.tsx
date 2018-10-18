@@ -1,12 +1,12 @@
 import React from 'react'
 import Container from '../../components/Container'
-import { View, Text } from 'react-native'
+import { View, Text, StatusBar } from 'react-native'
 import TextInput from '../../components/TextInput'
 import Button from '../../components/Button'
 import styles from './styles'
 import strings from '../../resources/strings'
 import Loading from '../../components/Loading'
-import ErrorDialog, { IError } from '../../components/ErrorDialog';
+import ErrorDialog, { IError } from '../../components/ErrorDialog'
 
 interface ILoginContainerProps {
   onTextChange(personalNumber: string): void
@@ -14,11 +14,15 @@ interface ILoginContainerProps {
   invalidField: boolean
   personalNumber: string
   isLoading: boolean
-  error?: IError,
+  error?: IError
 }
 
 export default (props: ILoginContainerProps) => (
   <View style={{ flex: 1 }}>
+    <View>
+      <StatusBar barStyle="dark-content" />
+    </View>
+
     <Container>
       <View style={styles.logoContainer} />
       <Text style={styles.title}>{strings.LOGIN_BANKID}</Text>
