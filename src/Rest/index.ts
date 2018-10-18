@@ -145,3 +145,7 @@ export class AuthenticationError extends Error {
     Object.setPrototypeOf(this, AuthenticationError.prototype)
   }
 }
+
+export function getPdf(specification: number) {
+  return `${UTBREST_URL}/utbetalningar/specifikation?id=${specification}&${KANAL}`
+}
