@@ -3,7 +3,7 @@ import { View, StyleSheet, FlatList, Text, ScrollView } from 'react-native'
 import { NavigationScreenProp } from 'react-navigation'
 import { PaymentFilter } from '../../payments/PaymentFilter'
 import Payment from '../../components/Payment'
-import Card from '../../components/Card';
+import Card from '../../components/Card'
 
 interface IProps {
   navigation: NavigationScreenProp<{}, {}>
@@ -26,10 +26,10 @@ export default class Payments extends React.Component<IProps, IState> {
   public componentDidMount() {
     const payments: IPayments = this.props.navigation.getParam('payments', null)
     this.setState({
-      prelAndDone: PaymentFilter.sortByDate(
+      prelAndDone: PaymentFilter.sortAscending(
         PaymentFilter.concatPrelAndDone(payments)
       ),
-      history: PaymentFilter.sortByDate(payments.tidigare)
+      history: PaymentFilter.sortDescending(payments.tidigare)
     })
   }
 

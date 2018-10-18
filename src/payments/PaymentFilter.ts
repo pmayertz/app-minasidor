@@ -26,13 +26,25 @@ export class PaymentFilter {
     return mappedPayments
   }
 
-  public static sortByDate(payments: IPayment[]): IPayment[] {
+  public static sortAscending(payments: IPayment[]): IPayment[] {
     return payments.sort((first, second) => {
       if (first.datum < second.datum) {
         return -1
       }
       if (first.datum > second.datum) {
         return 1
+      }
+      return 0
+    })
+  }
+
+  public static sortDescending(payments: IPayment[]): IPayment[] {
+    return payments.sort((first, second) => {
+      if (first.datum < second.datum) {
+        return 1
+      }
+      if (first.datum > second.datum) {
+        return -1
       }
       return 0
     })
