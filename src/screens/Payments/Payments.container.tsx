@@ -25,22 +25,45 @@ export default class PaymentsContainer extends React.Component<IProps, IState> {
   }
 
   public componentDidMount() {
-    const payments: IPayments = this.props.navigation.getParam('payments', null)
+    this.getPayments(this.props.navigation.getParam('payments', null))
+  }
+
+  private getPayments(payments: IPayments) {
+    if (!payments) {
+      return
+    }
+
+    const prelAndDone = PaymentFilter.sortAscending(
+      PaymentFilter.concatPrelAndDone(payments)
+    )
+    const history = PaymentFilter.sortDescending(payments.tidigare)
+
+    prelAndDone.forEach(payment => {
+      payment.detaljer.forEach(detail => {
+        console.log(PaymentFilter.getDelforman(detail))
+        detail.delformanKlartext = PaymentFilter.getDelforman(detail)
+      })
+    })
+
+    history.forEach(payment => {
+      payment.detaljer.forEach(detail => {
+        detail.delformanKlartext = PaymentFilter.getDelforman(detail)
+      })
+    })
+
     this.setState({
-      prelAndDone: PaymentFilter.sortAscending(
-        PaymentFilter.concatPrelAndDone(payments)
-      ),
-      history: PaymentFilter.sortDescending(payments.tidigare)
+      prelAndDone,
+      history
     })
   }
 
   public render = () => (
-      <PaymentsScreen
-        prelAndDone={this.getPrelAndDoneElements()}
-        history={this.getHistoryElements()}
-      />
+    <PaymentsScreen
+      prelAndDone={this.getPrelAndDoneElements()}
+      history={this.getHistoryElements()}
+    />
   )
-  
+
   private getPrelAndDoneElements(): JSX.Element[] {
     return this.state.prelAndDone.map((data, key) => (
       <Payment key={key} payment={data} />

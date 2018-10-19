@@ -1,4 +1,9 @@
 export class PaymentFilter {
+  private static AMP = [
+    'Arbetsmarknadspolitiskt program',
+    'Arbetsmarknadspolitiskt pgm'
+  ]
+
   public static nextPaymentSum(payments: IPayments): [number, string] {
     const filteredPayments = this.nextPayment(payments)
     if (filteredPayments.length > 0) {
@@ -48,6 +53,22 @@ export class PaymentFilter {
       }
       return 0
     })
+  }
+
+  public static getDelforman(details: IPaymentDetail) {
+    return this.isAMP(details.delformanKlartext)
+      ? this.getPresentationText(details)
+      : details.delformanKlartext
+  }
+
+  private static getPresentationText(details: IPaymentDetail) {
+    return details.beloppstypKlartext
+      ? details.beloppstypKlartext
+      : details.ersattningAvdrag
+  }
+
+  private static isAMP(delforman: string) {
+    return this.AMP.indexOf(delforman) > -1
   }
 
   public static nextPayment(payments: IPayments): IPayment[] {
