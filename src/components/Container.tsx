@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet } from 'react-native'
 
 interface IContainerProps {
-  children?: JSX.Element[]
+  children?: JSX.Element[] | JSX.Element
   style?: object
 }
 

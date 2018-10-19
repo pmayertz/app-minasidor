@@ -78,6 +78,7 @@ export function postFormResponse(personalNumber: string) {
 }
 
 export function postLaunchResponse() {
+  console.log('postLaunchResponse')
   return fetch(AUTH_URL, {
     method: 'POST',
     credentials: 'include',
@@ -87,6 +88,7 @@ export function postLaunchResponse() {
     })
   })
     .then(response => {
+      console.log(response);
       if (response.status !== 200) {
         return logout()
           .then(logoutResponse => logoutResponse)
@@ -97,6 +99,7 @@ export function postLaunchResponse() {
       return response.json()
     })
     .catch(error => {
+      console.log(error);
       throw error
     })
 }

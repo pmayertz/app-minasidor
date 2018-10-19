@@ -40,17 +40,17 @@ export default class DashboardContainer extends React.Component<
   public componentDidMount = () => {
     this.setState({ isLoading: true })
 
-    // this.setState({ payments: PaymentsMock })
+    this.setState({ payments: PaymentsMock })
 
-    Rest.getUtbetalningar()
-      .then((responseBody: IPayments) => {
-        this.setState({ payments: responseBody, isLoading: false })
-      })
-      .catch(error => {
-        if (error instanceof Rest.AuthenticationError) {
-          this.props.navigation.navigate('Auth')
-        }
-      })
+    // Rest.getUtbetalningar()
+    //   .then((responseBody: IPayments) => {
+    //     this.setState({ payments: responseBody, isLoading: false })
+    //   })
+    //   .catch(error => {
+    //     if (error instanceof Rest.AuthenticationError) {
+    //       this.props.navigation.navigate('Auth')
+    //     }
+    //   })
   }
 
   public render = () => (

@@ -5,7 +5,8 @@ import {
   StyleSheet,
   Text,
   Button,
-  TouchableHighlight
+  TouchableHighlight,
+  TouchableOpacity
 } from 'react-native'
 
 const styles = StyleSheet.create({
@@ -61,7 +62,7 @@ export default ({ error }: IButtonProps) =>
           </Text>
           <Text>{error.subtitle}</Text>
         </View>
-        <TouchableHighlight
+        <TouchableOpacity
           style={styles.buttonContainer}
           onPress={() => error.onClose()}
         >
@@ -70,7 +71,7 @@ export default ({ error }: IButtonProps) =>
           >
             X
           </Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     </View>
   ) : null
