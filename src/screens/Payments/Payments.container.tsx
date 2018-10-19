@@ -40,7 +40,6 @@ export default class PaymentsContainer extends React.Component<IProps, IState> {
 
     prelAndDone.forEach(payment => {
       payment.detaljer.forEach(detail => {
-        console.log(PaymentFilter.getDelforman(detail))
         detail.delformanKlartext = PaymentFilter.getDelforman(detail)
       })
     })
