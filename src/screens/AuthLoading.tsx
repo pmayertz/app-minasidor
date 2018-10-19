@@ -25,7 +25,7 @@ export default class AuthLoading extends React.Component<IProps> {
   }
 
   private bootstrapAsync = () => {
-    //this.props.navigation.navigate('Dashboard')
+    // this.props.navigation.navigate('Dashboard')
     Rest.login()
     .then((response) => {
       this.props.navigation.navigate(response.type === 'formrequest' ? 'Auth' : 'App')

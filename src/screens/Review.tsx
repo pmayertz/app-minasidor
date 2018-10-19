@@ -13,7 +13,7 @@ interface IReviewProps {
 interface IReviewState {
   score: number
   message: string
-  error?: IError 
+  error?: IError
 }
 
 export default class Review extends React.Component<
