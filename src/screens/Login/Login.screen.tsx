@@ -1,13 +1,6 @@
 import React from 'react'
 import Container from '../../components/Container'
-import {
-  View,
-  Text,
-  StatusBar,
-  Image,
-  ScrollView,
-  KeyboardAvoidingView
-} from 'react-native'
+import { View, Text, Image } from 'react-native'
 import TextInput from '../../components/TextInput'
 import Button from '../../components/Button'
 import styles from './styles'

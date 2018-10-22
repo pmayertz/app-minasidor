@@ -1,8 +1,6 @@
 import React from 'react'
 import {
-  AsyncStorage,
   DeviceEventEmitter,
-  DeviceEventEmitterStatic,
   EmitterSubscription,
   Platform,
   Linking,
@@ -52,7 +50,7 @@ export default class LoginContainer extends React.Component<IProps, IState> {
 
   public componentDidMount() {
     if (Platform.OS === 'ios') {
-      Linking.addEventListener('url', this.handleUrlResponse);
+      Linking.addEventListener('url', this.handleUrlResponse)
     } else {
       this.onBankIDResponse = DeviceEventEmitter.addListener(
         BANKID_RESPONSE_KEY,
@@ -77,14 +75,17 @@ export default class LoginContainer extends React.Component<IProps, IState> {
         })
       })
       .catch(_ => {
-        this.setError('Inloggningen misslyckades', 'Det har uppstått ett problem med inloggningen, var god försök igen')
+        this.setError(
+          'Inloggningen misslyckades',
+          'Det har uppstått ett problem med inloggningen, var god försök igen'
+        )
         this.setState({ isLoading: false })
       })
   }
 
   public componentWillUnmount() {
     this.onBankIDResponse && this.onBankIDResponse.remove()
-    Linking.removeEventListener('url', this.handleUrlResponse);
+    Linking.removeEventListener('url', this.handleUrlResponse)
   }
 
   public render() {
@@ -110,7 +111,10 @@ export default class LoginContainer extends React.Component<IProps, IState> {
 
   private login(personalNumber: string) {
     if (invalidPersonalNumber(personalNumber)) {
-      this.setError('Fel format på personnummer', 'Personnummer bör skrivas i format ååååddmm-nnnn')
+      this.setError(
+        'Fel format på personnummer',
+        'Personnummer bör skrivas i format ååååddmm-nnnn'
+      )
       this.setState({ invalidField: true })
       return
     }
@@ -131,7 +135,10 @@ export default class LoginContainer extends React.Component<IProps, IState> {
           .catch(_ => this.alertToInstallBankID)
       })
       .catch(_ => {
-        this.setError('Inloggningen misslyckades', 'Det har uppstått ett problem med inloggningen, var god försök igen')
+        this.setError(
+          'Inloggningen misslyckades',
+          'Det har uppstått ett problem med inloggningen, var god försök igen'
+        )
         this.setState({ isLoading: false })
       })
   }
@@ -159,7 +166,9 @@ export default class LoginContainer extends React.Component<IProps, IState> {
               .then(() => {
                 return
               })
-              .catch(_ => this.setError('Något gick fel', 'Var god försök igen'))
+              .catch(_ =>
+                this.setError('Något gick fel', 'Var god försök igen')
+              )
           }
         }
       ],

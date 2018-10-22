@@ -1,12 +1,6 @@
 import React from 'react'
 import Navigation from './navigation'
-import {
-  StatusBar,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-  View
-} from 'react-native'
+import { StatusBar, View } from 'react-native'
 
 export default () => (
   <View style={{ flex: 1 }}>

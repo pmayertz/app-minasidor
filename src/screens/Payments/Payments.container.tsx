@@ -1,9 +1,7 @@
 import React from 'react'
-import { StyleSheet, Text, ScrollView } from 'react-native'
 import { NavigationScreenProp } from 'react-navigation'
 import { PaymentFilter } from '../../payments/PaymentFilter'
 import Payment from '../../components/Payment'
-import Card from '../../components/Card'
 import PaymentsScreen from './Payments.screen'
 
 interface IProps {

@@ -2,8 +2,8 @@ import React from 'react'
 import { ScrollView, View, Text, StyleSheet } from 'react-native'
 import PaymentCircle from '../../components/PaymentCircle'
 import NavigationButton from '../../components/NavigationButton'
-import Button from '../../components/Button';
-import Loading from '../../components/Loading';
+import Button from '../../components/Button'
+import Loading from '../../components/Loading'
 
 interface IPaymentsScreenProps {
   nextPayment: [number, string]
