@@ -69,10 +69,10 @@ export default class LoginContainer extends React.Component<IProps, IState> {
         if (response.status) {
           throw new Error('Felaktig inloggning')
         }
+        
+        global.fullname = this.getName(response)
 
-        this.props.navigation.navigate('App', {
-          fullname: this.getName(response)
-        })
+        this.props.navigation.navigate('App')
       })
       .catch(_ => {
         this.setError(

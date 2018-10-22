@@ -14,7 +14,7 @@ export default (props: IDrawerProps) => (
   <View style={styles.container}>
     <View style={styles.header}>
       <Icon name="child-care" style={styles.placeholder} size={140} />
-      <Text style={styles.name}>{props.navigation.getParam('fullname', '')}</Text>
+      <Text style={styles.name}>{global.fullname}</Text>
     </View>
     <MenuItem
       icon="home"
