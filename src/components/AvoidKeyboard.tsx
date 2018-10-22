@@ -4,6 +4,7 @@ import { ScrollView, KeyboardAvoidingView } from 'react-native';
 export default (props: { children: JSX.Element[] | JSX.Element}) => (
   <ScrollView
         bounces={false}
+        showsVerticalScrollIndicator={false}
         style={{
           flex: 1,
           backgroundColor: '#007D46'

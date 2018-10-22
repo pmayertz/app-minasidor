@@ -1,12 +1,9 @@
-import { StyleSheet, Dimensions } from 'react-native'
+import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-  logoContainer: {
-    
-  },
   child: {
     marginVertical: 8,
-    elevation: 1,
+    elevation: 1
   },
   invalid: {
     borderWidth: 2,

@@ -4,32 +4,33 @@ import * as Rest from '../Rest'
 import { NavigationScreenProp } from 'react-navigation'
 import MenuItem from './MenuItem';
 import LogoutButton from './LogoutButton';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 interface IDrawerProps {
   navigation: NavigationScreenProp<{}, {}>
 }
 
-export default ({ navigation }: IDrawerProps) => (
+export default (props: IDrawerProps) => (
   <View style={styles.container}>
     <View style={styles.header}>
-      <View style={styles.placeholder} />
-      <Text style={styles.name}>Namn Namnsson</Text>
+      <Icon name="child-care" style={styles.placeholder} size={140} />
+      <Text style={styles.name}>{props.navigation.getParam('fullname', '')}</Text>
     </View>
     <MenuItem
-      icon="archive"
+      icon="home"
       title="Översikt"
       style={{ elevation: 1}}
       onPress={() => {
-        navigation.navigate('Dashboard')
-        navigation.toggleDrawer()
+        props.navigation.navigate('Dashboard')
+        props.navigation.toggleDrawer()
       }}
     />
     <LogoutButton
       onPress={() => {
         Rest.logout()
           .then(_ => {
-            navigation.navigate('Auth')
-            navigation.toggleDrawer()
+            props.navigation.navigate('Auth')
+            props.navigation.toggleDrawer()
           })
           .catch(error => console.log(error))
       }}
@@ -43,20 +44,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#DCE7F1'
   },
   header: {
-    padding: 8,
+    paddingBottom: 8,
     backgroundColor: '#116A3E',
     alignItems: 'center',
     elevation: 2
   },
   placeholder: {
-    width: 140,
-    height: 140,
-    backgroundColor: '#DCE7F1',
-    borderRadius: 70,
+    color: '#DCE7F1',
     elevation: 4
   },
   name: {
-    paddingTop: 8,
     color: '#DCE7F1',
     fontSize: 20,
     fontWeight: 'bold',

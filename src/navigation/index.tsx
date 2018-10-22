@@ -49,7 +49,7 @@ const DashboardStack = createStackNavigator(
 
 const DrawerStack = createDrawerNavigator(
   { DashboardStack },
-  { contentComponent: Drawer }
+  { contentComponent: (props) => <Drawer {...props} /> }
 )
 
 const AppStack = createStackNavigator(

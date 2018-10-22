@@ -9,7 +9,7 @@ export default {
       detaljer: [
         {
           delforman: 'FP',
-          delformanKlartext: 'Föräldrapenning',
+          delformanKlartext: 'Arbetsmarknadspolitiskt program',
           beloppstyp: 'FPG',
           beloppstypKlartext: 'Föräldrapenning',
           ersattningAvdrag: ''
@@ -41,7 +41,7 @@ export default {
       detaljer: [
         {
           delforman: 'FP',
-          delformanKlartext: 'Föräldrapenning',
+          delformanKlartext: 'Arbetsmarknadspolitiskt program',
           beloppstyp: 'FPG',
           beloppstypKlartext: 'Föräldrapenning',
           ersattningAvdrag: ''
