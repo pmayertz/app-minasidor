@@ -1,34 +1,37 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import Card from './Card';
+import Card from './Card'
 
 interface IPaymentProps {
   payment: IPayment
+  onPress(): void
 }
 
-export default ({ payment }: IPaymentProps) => (
+export default ({ payment, onPress }: IPaymentProps) => (
   <Card style={styles.container}>
-    <View
-      style={[
-        styles.colorBar,
-        payment.status === 'KLAR' && { backgroundColor: '#669933' },
-        payment.status === 'PREL' && { backgroundColor: '#FF9900' }
-      ]}
-    >
-      <Icon name="chevron-right" size={28} color="white" />
-    </View>
-    <View style={styles.infoContainer}>
-      <View style={styles.amountContainer}>
-        <Text style={styles.amount}>{payment.nettobelopp}</Text>
-        <Text style={{ fontWeight: 'bold' }}> kr</Text>
+    <TouchableOpacity onPress={onPress} style={{flex: 1, flexDirection: 'row'}}>
+      <View
+        style={[
+          styles.colorBar,
+          payment.status === 'KLAR' && { backgroundColor: '#669933' },
+          payment.status === 'PREL' && { backgroundColor: '#FF9900' }
+        ]}
+      >
+        <Icon name="chevron-right" size={28} color="white" />
       </View>
-      <Text style={styles.defaultText}>{payment.datum}</Text>
-      <View style={styles.divider} />
-      {payment.detaljer.map((detalj, key) => (
-        <Text key={key}>{detalj.delformanKlartext}</Text>
-      ))}
-    </View>
+      <View style={styles.infoContainer}>
+        <View style={styles.amountContainer}>
+          <Text style={styles.amount}>{payment.nettobelopp}</Text>
+          <Text style={{ fontWeight: 'bold' }}> kr</Text>
+        </View>
+        <Text style={styles.defaultText}>{payment.datum}</Text>
+        <View style={styles.divider} />
+        {payment.detaljer.map((detalj, key) => (
+          <Text key={key}>{detalj.delformanKlartext}</Text>
+        ))}
+      </View>
+    </TouchableOpacity>
   </Card>
 )
 

@@ -1,4 +1,7 @@
 import * as CONSTANTS from '../../CONSTANTS'
+import RNFetchBlob from 'rn-fetch-blob'
+import SetCookieParser from "set-cookie-parser"
+
 const KANAL = 'kanal=3'
 
 let AUTH_URL = CONSTANTS.PROD_URL.AUTH
@@ -13,6 +16,8 @@ if (__DEV__) {
   SKICKAEPOSTREST_URL = CONSTANTS.TEST_URL.SKICKAEPOSTREST
 }
 
+let SESSION_COOKIES = [];
+
 export function login() {
   return fetch(AUTH_URL, {
     credentials: 'include'
@@ -25,6 +30,7 @@ export function login() {
             throw new Error(error)
           })
       }
+      SESSION_COOKIES = SESSION_COOKIES.concat(get_set_cookies(response.headers))
       return response.json()
     })
     .catch(error => {
@@ -70,6 +76,7 @@ export function postFormResponse(personalNumber: string) {
             throw new Error(error)
           })
       }
+      SESSION_COOKIES = SESSION_COOKIES.concat(get_set_cookies(response.headers))
       return response.json()
     })
     .catch(error => {
@@ -96,6 +103,7 @@ export function postLaunchResponse() {
             throw new Error(error)
           })
       }
+      SESSION_COOKIES = SESSION_COOKIES.concat(get_set_cookies(response.headers))
       return response.json()
     })
     .catch(error => {
@@ -137,10 +145,9 @@ export function skickaEpost(score: number, meddelande: string) {
     headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
     credentials: 'include',
     body: JSON.stringify(email)
-  })
-  .catch(error => {
+  }).catch(error => {
     throw new Error(error)
-})
+  })
 }
 
 export class AuthenticationError extends Error {
@@ -151,5 +158,27 @@ export class AuthenticationError extends Error {
 }
 
 export function getPdf(specification: number) {
-  return `${UTBREST_URL}/utbetalningar/specifikation?id=${specification}&${KANAL}`
+  const cookiesToSend = SESSION_COOKIES
+  .map(cookie => {
+    const parsed_cookie = SetCookieParser.parse(cookie)
+    return `${parsed_cookie.name}=${parsed_cookie.value}`
+  })
+  .join('; ')
+
+  const url = `${UTBREST_URL}/utbetalningar/specifikation?id=${specification}&${KANAL}`
+  return RNFetchBlob.config({ fileCache: true })
+    .fetch('GET', url, {Cookie: cookiesToSend})
+    .then(res => {
+      return Promise.resolve(res.path())
+    })
+}
+
+function get_set_cookies(headers: Headers) {
+  const setCookies = []
+  for (const [name, value] of headers) {
+    if (name === 'set-cookie') {
+      setCookies.push(value)
+    }
+  }
+  return setCookies
 }

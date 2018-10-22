@@ -1,5 +1,10 @@
 import React from 'react'
-import { Text, StyleSheet } from 'react-native'
+import {
+  Text,
+  StyleSheet,
+  TouchableHighlight,
+  TouchableOpacity
+} from 'react-native'
 
 interface ILogoutButtonProps {
   onPress(): void
@@ -18,7 +23,7 @@ const styles = StyleSheet.create({
 })
 
 export default ({ onPress }: ILogoutButtonProps) => (
-  <Text style={styles.logout} onPress={onPress}>
-    Logga ut
-  </Text>
+  <TouchableOpacity onPress={onPress}>
+    <Text style={styles.logout}>Logga ut</Text>
+  </TouchableOpacity>
 )

@@ -1,8 +1,6 @@
 import React from 'react'
 import {
-  AsyncStorage,
   DeviceEventEmitter,
-  DeviceEventEmitterStatic,
   EmitterSubscription,
   Platform,
   Linking,

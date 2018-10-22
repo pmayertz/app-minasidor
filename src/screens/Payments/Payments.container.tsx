@@ -1,10 +1,9 @@
 import React from 'react'
-import { StyleSheet, Text, ScrollView } from 'react-native'
 import { NavigationScreenProp } from 'react-navigation'
 import { PaymentFilter } from '../../payments/PaymentFilter'
 import Payment from '../../components/Payment'
-import Card from '../../components/Card'
 import PaymentsScreen from './Payments.screen'
+import * as Rest from '../../Rest'
 
 interface IProps {
   navigation: NavigationScreenProp<{}, {}>
@@ -43,13 +42,25 @@ export default class PaymentsContainer extends React.Component<IProps, IState> {
   
   private getPrelAndDoneElements(): JSX.Element[] {
     return this.state.prelAndDone.map((data, key) => (
-      <Payment key={key} payment={data} />
+      <Payment key={key} payment={data} onPress={() => this.showPdf(data.specifikation)}/>
     ))
   }
 
   private getHistoryElements(): JSX.Element[] {
     return this.state.history.map((data, key) => (
-      <Payment key={key} payment={data} />
+      <Payment key={key} payment={data} onPress={() => this.showPdf(data.specifikation)}/>
     ))
+  }
+
+  private showPdf(specification: number) {
+    Rest.getPdf(specification)
+    .then((path) => {
+      this.props.navigation.navigate('PdfScreen', {
+        source: { uri: `file://${path}` }
+      })
+    })
+    .catch(error => {
+      console.log(error)
+    })
   }
 }
