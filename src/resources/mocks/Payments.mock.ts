@@ -6,6 +6,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: 540367726,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -22,6 +23,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: 1168446575,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -38,6 +40,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: 697325936,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -54,6 +57,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: 1325404785,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -70,6 +74,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: 1970724722,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -86,6 +91,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: 1970724723,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -104,11 +110,12 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Dagersättning',
       specifikation: -385905344,
+      status: 'KLAR',
       detaljer: [
         {
-          delforman: null,
+          delforman: '',
           delformanKlartext: 'Föräldrapenning',
-          beloppstyp: null,
+          beloppstyp: '',
           beloppstypKlartext: '',
           ersattningAvdrag: 'Föräldrapenning'
         }
@@ -120,11 +127,12 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Dagersättning',
       specifikation: 972748769,
+      status: 'KLAR',
       detaljer: [
         {
-          delforman: null,
+          delforman: '',
           delformanKlartext: 'Föräldrapenning',
-          beloppstyp: null,
+          beloppstyp: '',
           beloppstypKlartext: '',
           ersattningAvdrag: 'Föräldrapenning'
         }
@@ -136,11 +144,12 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Dagersättning',
       specifikation: 1232024669,
+      status: 'KLAR',
       detaljer: [
         {
-          delforman: null,
+          delforman: '',
           delformanKlartext: 'Föräldrapenning',
-          beloppstyp: null,
+          beloppstyp: '',
           beloppstypKlartext: '',
           ersattningAvdrag: 'Föräldrapenning'
         }
@@ -154,6 +163,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: -312526135,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -170,6 +180,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: 47915578,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -186,6 +197,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: 574292351,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -202,6 +214,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: 935449048,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -218,6 +231,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: 1462481223,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -234,6 +248,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: 1989110588,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -250,6 +265,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: -1364346300,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -266,6 +282,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: 1840798389,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -282,6 +299,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: -476842642,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -298,6 +316,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: -1875750718,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -314,6 +333,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: 410661037,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -330,6 +350,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: -679161570,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -346,6 +367,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: 1298164716,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -362,6 +384,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: -100653987,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -378,6 +401,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: -2109954303,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -394,6 +418,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: 786819901,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -410,6 +435,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: -1221795222,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -426,6 +452,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: -1458680357,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -442,6 +469,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: -334291564,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -458,6 +486,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: -1733110267,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -474,6 +503,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: 552526922,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -490,6 +520,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: 1435011491,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -506,6 +537,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: 1440715794,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -522,6 +554,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: 659889283,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -538,6 +571,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: -509039706,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -554,6 +588,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: 1997419543,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -570,6 +605,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: 378463973,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -586,6 +622,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: -154221767,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'TFP',
@@ -609,6 +646,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: 1265967631,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -625,6 +663,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: -522689371,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -641,6 +680,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: -1561515294,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -657,6 +697,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: -1915892289,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -680,6 +721,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: -598567349,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -696,6 +738,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: 28894941,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'TFP',
@@ -719,6 +762,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: 1492446602,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -735,6 +779,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: -157830244,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -751,6 +796,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: -1915017015,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -767,6 +813,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: -278037892,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -783,6 +830,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: -1028200038,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -799,6 +847,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: 923872726,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'FP',
@@ -815,6 +864,7 @@ export default {
       utbetalningsfamilj: 'ABB',
       utbetalningsfamiljKlartext: 'Månad',
       specifikation: -140011166,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'ABB',
@@ -831,6 +881,7 @@ export default {
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: -1606543851,
+      status: 'KLAR',
       detaljer: [
         {
           delforman: 'TFP',

@@ -3,7 +3,7 @@ import { Alert, AsyncStorage } from 'react-native'
 import { NavigationScreenProp } from 'react-navigation'
 import * as Rest from '../../Rest'
 import { PaymentFilter } from '../../payments/PaymentFilter'
-import PaymentsMock from './Payments.mock'
+// import PaymentsMock from '../../resources/mocks/Payments.mock'
 import DashboardScreen from './Dashboard.screen'
 
 interface IProps {
@@ -39,7 +39,7 @@ export default class DashboardContainer extends React.Component<
 
   public componentDidMount = () => {
     this.setState({ isLoading: true })
-    //this.setState({ payments: PaymentsMock })
+    // this.setState({ payments: PaymentsMock })
 
     Rest.getUtbetalningar()
       .then((responseBody: IPayments) => {
