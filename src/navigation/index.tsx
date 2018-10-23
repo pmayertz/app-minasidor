@@ -11,8 +11,34 @@ import Payments from '../screens/Payments'
 import Drawer from './Drawer'
 import Review from '../screens/Review'
 import PdfScreen from '../screens/PdfScreen'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import { Platform } from 'react-native'
+import { Platform, StyleSheet } from 'react-native'
+import NavigationIcon from './NavigationIcon'
+import NotificationIcon from './NotificationIcon'
+
+const styles = StyleSheet.create({
+  appHeader: {
+    color: 'white',
+    backgroundColor: '#116A3E',
+    borderBottomColor: '#0c4f2d',
+    borderBottomWidth: 2,
+    elevation: 6,
+    height: Platform.OS === 'ios' ? 68 : 58
+  },
+  appHeaderTitle: {
+    fontWeight: 'bold'
+  },
+  dashboardHeader: {
+    backgroundColor: '#DCE7F1',
+    elevation: 0,
+    shadowOpacity: 0,
+    borderBottomWidth: 0
+  },
+  dashboardBackTitle: {
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+})
 
 const PaymentsStack = createStackNavigator(
   {
@@ -32,58 +58,26 @@ const DashboardStack = createStackNavigator(
       headerForceInset: { top: 'never', bottom: 'never' },
       title: '',
       headerBackTitle: 'Tillbaka',
-      headerStyle: {
-        backgroundColor: '#DCE7F1',
-        elevation: 0,
-        shadowOpacity: 0,
-        borderBottomWidth: 0
-      },
-      headerBackTitleStyle: {
-        alignContent: 'center',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }
+      headerStyle: styles.dashboardHeader,
+      headerBackTitleStyle: styles.dashboardBackTitle
     }
   }
 )
 
 const DrawerStack = createDrawerNavigator(
   { DashboardStack },
-  { contentComponent: (props) => <Drawer {...props} /> }
+  { contentComponent: props => <Drawer {...props} /> }
 )
 
 const AppStack = createStackNavigator(
   { DrawerStack },
   {
     navigationOptions: ({ navigation }) => ({
-      headerLeft: (
-        <Icon
-          name="navicon"
-          size={32}
-          style={{ padding: 16, color: '#EEEEEE' }}
-          onPress={() => navigation.toggleDrawer()}
-        />
-      ),
-      headerRight: (
-        <Icon
-          name="bell"
-          size={32}
-          style={{ padding: 16, color: '#EEEEEE' }}
-          onPress={() => navigation.toggleDrawer()}
-        />
-      ),
-      headerStyle: {
-        color: 'white',
-        backgroundColor: '#116A3E',
-        borderBottomColor: '#0c4f2d',
-        borderBottomWidth: 2,
-        elevation: 6,
-        height: Platform.OS === 'ios' ? 68 : 58
-      },
+      headerLeft: <NavigationIcon navigation={navigation} />,
+      headerRight: <NotificationIcon navigation={navigation} />,
       headerTintColor: '#EEEEEE',
-      headerTitleStyle: {
-        fontWeight: 'bold'
-      }
+      headerStyle: styles.appHeader,
+      headerTitleStyle: styles.appHeaderTitle
     })
   }
 )

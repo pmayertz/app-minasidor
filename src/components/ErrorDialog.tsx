@@ -1,11 +1,8 @@
 import React from 'react'
 import {
   View,
-  ActivityIndicator,
   StyleSheet,
   Text,
-  Button,
-  TouchableHighlight,
   TouchableOpacity
 } from 'react-native'
 
@@ -38,8 +35,8 @@ const styles = StyleSheet.create({
 })
 
 export interface IError {
-  title: string,
-  subtitle: string,
+  title: string
+  subtitle: string
   onClose(): void
 }
 
