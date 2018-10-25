@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavigationScreenProp } from 'react-navigation'
-import { PaymentFilter } from '../../payments/PaymentFilter'
+import PaymentFilter from '../../shared/filters/PaymentFilter'
 import Payment from '../../components/Payment'
 import PaymentsScreen from './Payments.screen'
 import * as Rest from '../../Rest'
@@ -37,13 +37,13 @@ export default class PaymentsContainer extends React.Component<IProps, IState> {
     )
     const history = PaymentFilter.sortDescending(payments.tidigare)
 
-    prelAndDone.forEach(payment => {
+    prelAndDone.forEach((payment: IPayment) => {
       payment.detaljer.forEach(detail => {
         detail.delformanKlartext = PaymentFilter.getDelforman(detail)
       })
     })
 
-    history.forEach(payment => {
+    history.forEach((payment: IPayment) => {
       payment.detaljer.forEach(detail => {
         detail.delformanKlartext = PaymentFilter.getDelforman(detail)
       })
@@ -76,12 +76,12 @@ export default class PaymentsContainer extends React.Component<IProps, IState> {
 
   private showPdf(specification: number) {
     Rest.getPdf(specification)
-    .then((path) => {
+    .then((path: string) => {
       this.props.navigation.navigate('PdfScreen', {
         source: { uri: `file://${path}` }
       })
     })
-    .catch(error => {
+    .catch((error: Error) => {
       console.log(error)
     })
   }

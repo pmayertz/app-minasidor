@@ -2,7 +2,7 @@ import React from 'react'
 import { Alert, AsyncStorage } from 'react-native'
 import { NavigationScreenProp } from 'react-navigation'
 import * as Rest from '../../Rest'
-import { PaymentFilter } from '../../payments/PaymentFilter'
+import PaymentFilter from '../../shared/filters/PaymentFilter'
 // import PaymentsMock from '../../resources/mocks/Payments.mock'
 import DashboardScreen from './Dashboard.screen'
 
