@@ -1,9 +1,10 @@
 import React from 'react'
-import { ScrollView, View, Text, Picker } from 'react-native'
+import { View, Text, Picker } from 'react-native'
 import TextInput from '../../components/TextInput'
 import ErrorDialog, { IError } from '../../components/ErrorDialog'
 import styles from './styles'
 import Button from '../../components/Button'
+import AvoidKeyboard from '../../components/AvoidKeyboard';
 
 interface IReviewScreenProps {
   score: number
@@ -16,7 +17,7 @@ interface IReviewScreenProps {
 }
 
 export default (props: IReviewScreenProps) => (
-  <ScrollView style={styles.container} keyboardShouldPersistTaps="always">
+  <AvoidKeyboard>
     <View style={styles.review}>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Lämna synpunkter</Text>
@@ -57,5 +58,5 @@ export default (props: IReviewScreenProps) => (
       <Button title="Skicka" onPress={() => props.sendFeedback()} />
       <ErrorDialog error={props.error} />
     </View>
-  </ScrollView>
+  </AvoidKeyboard>
 )

@@ -1,11 +1,6 @@
 import { StyleSheet } from 'react-native'
 
 export default StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#DCE7F1',
-    paddingTop: 10
-  },
   review: {
     marginHorizontal: 10,
     marginBottom: 10,
