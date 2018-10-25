@@ -7,13 +7,6 @@ import {
 } from 'react-native'
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    justifyContent: 'flex-end'
-  },
   loadingContainer: {
     display: 'flex',
     flexDirection: 'row',
@@ -46,7 +39,6 @@ interface IButtonProps {
 
 export default ({ error }: IButtonProps) =>
   error ? (
-    <View style={styles.container}>
       <View style={styles.loadingContainer}>
         <View style={styles.textContainer}>
           <Text
@@ -70,5 +62,4 @@ export default ({ error }: IButtonProps) =>
           </Text>
         </TouchableOpacity>
       </View>
-    </View>
   ) : null

@@ -22,7 +22,6 @@ export default (props: ILoginContainerProps) => (
   <View style={{ flex: 1 }}>
     <Container>
       <AvoidKeyboard>
-        <View style={styles.logoContainer} />
         <Image
           style={{ width: 300, height: 300, alignSelf: 'center' }}
           source={require('./fk-logo.jpg')}
