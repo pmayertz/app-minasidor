@@ -36,7 +36,7 @@ export default {
     },
     {
       nettobelopp: 5106.0,
-      datum: '2018-12-21',
+      datum: '2018-12-22',
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: 697325936,
@@ -53,7 +53,7 @@ export default {
     },
     {
       nettobelopp: 7659.0,
-      datum: '2018-12-21',
+      datum: '2018-12-22',
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: 1325404785,
@@ -70,7 +70,7 @@ export default {
     },
     {
       nettobelopp: 639.0,
-      datum: '2018-12-21',
+      datum: '2018-12-20',
       utbetalningsfamilj: 'DAG',
       utbetalningsfamiljKlartext: 'Daglig',
       specifikation: 1970724722,
@@ -101,9 +101,7 @@ export default {
           ersattningAvdrag: ''
         }
       ]
-    }
-  ],
-  preliminara: [
+    },
     {
       nettobelopp: 5106.0,
       datum: '2018-10-25',
@@ -116,11 +114,13 @@ export default {
           delforman: '',
           delformanKlartext: 'Föräldrapenning',
           beloppstyp: '',
-          beloppstypKlartext: '',
+          
           ersattningAvdrag: 'Föräldrapenning'
         }
       ]
     },
+  ],
+  preliminara: [
     {
       nettobelopp: 7021.0,
       datum: '2018-11-26',
@@ -133,7 +133,22 @@ export default {
           delforman: '',
           delformanKlartext: 'Föräldrapenning',
           beloppstyp: '',
-          beloppstypKlartext: '',
+          ersattningAvdrag: 'Föräldrapenning'
+        }
+      ]
+    },
+    {
+      nettobelopp: 5106.0,
+      datum: '2018-10-25',
+      utbetalningsfamilj: 'DAG',
+      utbetalningsfamiljKlartext: 'Dagersättning',
+      specifikation: -385905344,
+      status: 'KLAR',
+      detaljer: [
+        {
+          delforman: '',
+          delformanKlartext: 'Föräldrapenning',
+          beloppstyp: '',
           ersattningAvdrag: 'Föräldrapenning'
         }
       ]
@@ -150,7 +165,6 @@ export default {
           delforman: '',
           delformanKlartext: 'Föräldrapenning',
           beloppstyp: '',
-          beloppstypKlartext: '',
           ersattningAvdrag: 'Föräldrapenning'
         }
       ]

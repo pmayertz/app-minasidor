@@ -12,7 +12,7 @@ interface IPaymentDetail {
   delforman: string
   delformanKlartext: string
   beloppstyp: string
-  beloppstypKlartext: string
+  beloppstypKlartext?: string
   ersattningAvdrag: string
 }
 

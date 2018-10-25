@@ -60,3 +60,4 @@ CONSTANTS.ts
 # Jest
 #
 .jest/
+coverage/

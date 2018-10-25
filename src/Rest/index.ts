@@ -34,6 +34,7 @@ export function login() {
       return response.json()
     })
     .catch(error => {
+      console.log(error)
       throw error
     })
 }
@@ -49,6 +50,7 @@ export function logout() {
       return
     })
     .catch(error => {
+      console.log(error)
       throw error
     })
 }
@@ -80,6 +82,7 @@ export function postFormResponse(personalNumber: string) {
       return response.json()
     })
     .catch(error => {
+      console.log(error)
       throw error
     })
 }
@@ -105,6 +108,7 @@ export function postLaunchResponse() {
       return response.json()
     })
     .catch(error => {
+      console.log(error)
       throw error
     })
 }
@@ -126,6 +130,7 @@ export function getUtbetalningar() {
       return jsonResponse
     })
     .catch(error => {
+      console.log(error)
       throw error
     })
 }
@@ -143,6 +148,7 @@ export function skickaEpost(score: number, meddelande: string) {
     credentials: 'include',
     body: JSON.stringify(email)
   }).catch(error => {
+    console.log(error)
     throw new Error(error)
   })
 }

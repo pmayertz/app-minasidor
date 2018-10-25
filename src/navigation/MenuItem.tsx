@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableHighlight, View, Text, StyleSheet } from 'react-native'
+import { TouchableHighlight, View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
 interface IMenuItemProps {
@@ -23,12 +23,12 @@ const styles = StyleSheet.create({
 })
 
 export default ({ onPress, title, icon, style }: IMenuItemProps) => (
-  <TouchableHighlight style={[styles.link, style]} onPress={onPress}>
+  <TouchableOpacity style={[styles.link, style]} onPress={onPress}>
     <View
       style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
     >
       <Icon name={icon} size={22} style={{ marginRight: 8 }} />
       <Text style={styles.linkText}>{title}</Text>
     </View>
-  </TouchableHighlight>
+  </TouchableOpacity>
 )

@@ -39,6 +39,7 @@ export default class DashboardContainer extends React.Component<
 
   public componentDidMount = () => {
     this.setState({ isLoading: true })
+    
     // this.setState({ payments: PaymentsMock })
 
     Rest.getUtbetalningar()

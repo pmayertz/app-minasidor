@@ -10,7 +10,7 @@ import { BANKID_RESPONSE_KEY } from '../../resources/communication'
 import BankID from '../../BankID'
 import { NavigationScreenProp } from 'react-navigation'
 import * as Rest from '../../Rest'
-import { invalidPersonalNumber } from '../../resources/utils'
+import PersonalNumberFilter from '../../shared/filters/PersonalNumberFilter'
 import LoginScreen from './Login.screen'
 import { IError } from '../../components/ErrorDialog'
 
@@ -69,7 +69,7 @@ export default class LoginContainer extends React.Component<IProps, IState> {
         if (response.status) {
           throw new Error('Felaktig inloggning')
         }
-        
+
         this.props.navigation.navigate('App', {
           fullname: this.getName(response)
         })
@@ -110,7 +110,7 @@ export default class LoginContainer extends React.Component<IProps, IState> {
   }
 
   private login(personalNumber: string) {
-    if (invalidPersonalNumber(personalNumber)) {
+    if (PersonalNumberFilter.invalidFormat(personalNumber)) {
       this.setError(
         'Fel format på personnummer',
         'Personnummer bör skrivas i format ååååddmm-nnnn'
@@ -122,8 +122,8 @@ export default class LoginContainer extends React.Component<IProps, IState> {
     this.setState({ isLoading: true })
 
     Rest.login()
-      .then(_ => Rest.postFormResponse(personalNumber.replace('-', '')))
-      .then(_ => {
+      .then(() => Rest.postFormResponse(personalNumber.replace('-', '')))
+      .then(() => {
         Linking.canOpenURL('bankid://')
           .then((supported: boolean) => {
             if (!supported) {
@@ -132,7 +132,7 @@ export default class LoginContainer extends React.Component<IProps, IState> {
               BankID.start()
             }
           })
-          .catch(_ => this.alertToInstallBankID)
+          .catch(() => this.alertToInstallBankID)
       })
       .catch(_ => {
         this.setError(

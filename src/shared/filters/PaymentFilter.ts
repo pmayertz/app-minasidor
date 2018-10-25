@@ -1,4 +1,4 @@
-export class PaymentFilter {
+export default class PaymentFilter {
   private static AMP = [
     'Arbetsmarknadspolitiskt program',
     'Arbetsmarknadspolitiskt pgm'
