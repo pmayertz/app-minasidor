@@ -19,10 +19,12 @@ if (__DEV__) {
 let SESSION_COOKIES = [];
 
 export function login() {
+  console.log('login()')
   return fetch(AUTH_URL, {
     credentials: 'include'
   })
     .then(response => {
+      console.log(response)
       if (response.status !== 200) {
         return logout()
           .then(logoutResponse => logoutResponse)
@@ -40,10 +42,12 @@ export function login() {
 }
 
 export function logout() {
+  console.log('logout()')
   return fetch(`${MISIREST_URL}/logout`, {
     credentials: 'include'
   })
     .then(response => {
+      console.log(response)
       if (response.status !== 200) {
         throw new Error(`logout ${response.status}: ${response.text}`)
       }
@@ -56,6 +60,7 @@ export function logout() {
 }
 
 export function postFormResponse(personalNumber: string) {
+  console.log('postFormResponse()')
   return fetch(AUTH_URL, {
     method: 'POST',
     credentials: 'include',
@@ -71,6 +76,7 @@ export function postFormResponse(personalNumber: string) {
     })
   })
     .then(response => {
+      console.log(response)
       if (response.status !== 200) {
         return logout()
           .then(logoutResponse => logoutResponse)
@@ -88,6 +94,7 @@ export function postFormResponse(personalNumber: string) {
 }
 
 export function postLaunchResponse() {
+  console.log('postLaunchResponse()')
   return fetch(AUTH_URL, {
     method: 'POST',
     credentials: 'include',
@@ -97,6 +104,7 @@ export function postLaunchResponse() {
     })
   })
     .then(response => {
+      console.log(response)
       if (response.status !== 200) {
         return logout()
           .then(logoutResponse => logoutResponse)
@@ -114,10 +122,12 @@ export function postLaunchResponse() {
 }
 
 export function getUtbetalningar() {
+  console.log('getUtbetalningar()')
   return fetch(`${UTBREST_URL}/utbetalningar?${KANAL}`, {
     credentials: 'include'
   })
     .then(response => {
+      console.log(response)
       if (response.status !== 200) {
         throw new Error(`getUtbetalningar ${response.status}: ${response.text}`)
       }
@@ -136,6 +146,7 @@ export function getUtbetalningar() {
 }
 
 export function skickaEpost(score: number, meddelande: string) {
+  console.log('skickaEpost()')
   const email = {
     meddelandeSomSkickas: `${score}, ${meddelande}`,
     mottagare: 'skickaepost.app.omrade.val',
@@ -161,6 +172,7 @@ export class AuthenticationError extends Error {
 }
 
 export function getPdf(specification: number) {
+  console.log('getPdf()')
   const cookiesToSend = SESSION_COOKIES
   .map(cookie => {
     const parsed_cookie = SetCookieParser.parse(cookie)
