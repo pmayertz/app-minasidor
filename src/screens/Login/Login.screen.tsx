@@ -1,6 +1,6 @@
 import React from 'react'
 import Container from '../../components/Container'
-import { View, Text, Image } from 'react-native'
+import { View, Image } from 'react-native'
 import TextInput from '../../components/TextInput'
 import Button from '../../components/Button'
 import styles from './styles'
@@ -8,6 +8,7 @@ import strings from '../../resources/strings'
 import Loading from '../../components/Loading'
 import ErrorDialog, { IError } from '../../components/ErrorDialog'
 import AvoidKeyboard from '../../components/AvoidKeyboard'
+import Text from '../../components/Text';
 
 interface ILoginContainerProps {
   onTextChange(personalNumber: string): void

@@ -1,6 +1,7 @@
 import React from 'react'
-import { TouchableHighlight, View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import Text from '../components/Text';
 
 interface IMenuItemProps {
   onPress(): void

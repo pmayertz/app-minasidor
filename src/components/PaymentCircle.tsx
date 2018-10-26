@@ -1,5 +1,6 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native'
+import { StyleSheet, View, TouchableHighlight } from 'react-native'
+import Text from './Text';
 
 interface IPaymentCircleProps {
   nextPayment: [number, string]

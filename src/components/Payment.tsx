@@ -1,7 +1,8 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import Card from './Card'
+import Text from './Text';
 
 interface IPaymentProps {
   payment: IPayment

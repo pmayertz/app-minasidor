@@ -1,10 +1,11 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import * as Rest from '../Rest'
 import { NavigationScreenProp } from 'react-navigation'
 import MenuItem from './MenuItem';
 import LogoutButton from './LogoutButton';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Text from '../components/Text';
 
 interface IDrawerProps {
   navigation: NavigationScreenProp<{}, {}>

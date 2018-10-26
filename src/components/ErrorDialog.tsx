@@ -2,9 +2,9 @@ import React from 'react'
 import {
   View,
   StyleSheet,
-  Text,
   TouchableOpacity
 } from 'react-native'
+import Text from './Text';
 
 const styles = StyleSheet.create({
   loadingContainer: {

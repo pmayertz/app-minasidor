@@ -1,6 +1,7 @@
 import React from 'react'
-import { ScrollView, Text, StyleSheet } from 'react-native'
+import { ScrollView, StyleSheet } from 'react-native'
 import Card from '../../components/Card'
+import Text from '../../components/Text';
 
 interface IPaymentsScreenProps {
   prelAndDone: JSX.Element[]

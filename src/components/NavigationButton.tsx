@@ -1,12 +1,11 @@
 import React from 'react'
 import {
-  TouchableHighlight,
-  Text,
   StyleSheet,
   View,
   TouchableOpacity
 } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
+import Text from './Text';
 
 interface INavigationButtonProps {
   title: string

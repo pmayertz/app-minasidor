@@ -1,10 +1,11 @@
 import React from 'react'
-import { View, Text, Picker } from 'react-native'
+import { View, Picker } from 'react-native'
 import TextInput from '../../components/TextInput'
 import ErrorDialog, { IError } from '../../components/ErrorDialog'
 import styles from './styles'
 import Button from '../../components/Button'
 import AvoidKeyboard from '../../components/AvoidKeyboard';
+import Text from '../../components/Text';
 
 interface IReviewScreenProps {
   score: number
