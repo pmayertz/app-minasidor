@@ -10,8 +10,7 @@ const defaultStyles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 16,
-    paddingVertical: 16,
-    backgroundColor: '#007D46'
+    backgroundColor: '#DCE7F1'
   }
 })
 

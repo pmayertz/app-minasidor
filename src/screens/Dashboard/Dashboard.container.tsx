@@ -64,6 +64,7 @@ export default class DashboardContainer extends React.Component<
         })
       }}
       navigateToReview={() => this.props.navigation.navigate('Review')}
+      navigateToInfo={() => this.props.navigation.navigate('InfoScreen')}
     />
   )
 

@@ -11,6 +11,7 @@ import Payments from '../screens/Payments'
 import Drawer from './Drawer'
 import Review from '../screens/Review'
 import PdfScreen from '../screens/PdfScreen'
+import InfoScreen from '../screens/InfoScreen'
 import { Platform, StyleSheet } from 'react-native'
 import NavigationIcon from './NavigationIcon'
 import NotificationIcon from './NotificationIcon'
@@ -51,7 +52,7 @@ const PaymentsStack = createStackNavigator(
 )
 
 const DashboardStack = createStackNavigator(
-  { Dashboard, PaymentsStack, Review },
+  { Dashboard, PaymentsStack, Review, InfoScreen },
   {
     headerMode: 'float',
     navigationOptions: {

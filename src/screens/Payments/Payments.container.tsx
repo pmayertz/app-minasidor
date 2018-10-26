@@ -6,7 +6,7 @@ import PaymentsScreen from './Payments.screen'
 import * as Rest from '../../Rest'
 
 interface IProps {
-  navigation: NavigationScreenProp<{}, {}>
+  navigation: NavigationScreenProp<{}, { payments: IPayments }>
 }
 
 interface IState {
@@ -24,7 +24,13 @@ export default class PaymentsContainer extends React.Component<IProps, IState> {
   }
 
   public componentDidMount() {
-    this.getPayments(this.props.navigation.getParam('payments', null))
+    this.getPayments(
+      this.props.navigation.getParam('payments', {
+        klara: [],
+        preliminara: [],
+        tidigare: []
+      })
+    )
   }
 
   private getPayments(payments: IPayments) {
@@ -64,25 +70,33 @@ export default class PaymentsContainer extends React.Component<IProps, IState> {
 
   private getPrelAndDoneElements(): JSX.Element[] {
     return this.state.prelAndDone.map((data, key) => (
-      <Payment key={key} payment={data} onPress={() => this.showPdf(data.specifikation)}/>
+      <Payment
+        key={key}
+        payment={data}
+        onPress={() => this.showPdf(data.specifikation)}
+      />
     ))
   }
 
   private getHistoryElements(): JSX.Element[] {
     return this.state.history.map((data, key) => (
-      <Payment key={key} payment={data} onPress={() => this.showPdf(data.specifikation)}/>
+      <Payment
+        key={key}
+        payment={data}
+        onPress={() => this.showPdf(data.specifikation)}
+      />
     ))
   }
 
   private showPdf(specification: number) {
     Rest.getPdf(specification)
-    .then((path: string) => {
-      this.props.navigation.navigate('PdfScreen', {
-        source: { uri: `file://${path}` }
+      .then((path: string) => {
+        this.props.navigation.navigate('PdfScreen', {
+          source: { uri: `file://${path}` }
+        })
       })
-    })
-    .catch((error: Error) => {
-      console.log(error)
-    })
+      .catch((error: Error) => {
+        console.log(error)
+      })
   }
 }

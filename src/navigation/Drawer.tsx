@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Text from '../components/Text';
 
 interface IDrawerProps {
-  navigation: NavigationScreenProp<{}, {}>
+  navigation: NavigationScreenProp<{}, { fullname: string }>
 }
 
 export default (props: IDrawerProps) => (

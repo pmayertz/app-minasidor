@@ -12,6 +12,7 @@ interface IPaymentsScreenProps {
   leaveFeedback(rating: number): void
   navigateToPayments(): void
   navigateToReview(): void
+  navigateToInfo(): void
 }
 
 export default (props: IPaymentsScreenProps) => (
@@ -29,12 +30,12 @@ export default (props: IPaymentsScreenProps) => (
       <NavigationButton
         title="Ärenden"
         icon="folder-shared"
-        onPress={() => props.navigateToPayments()}
+        onPress={() => props.navigateToInfo()}
       />
       <NavigationButton
         title="Föräldrapenning"
         icon="child-friendly"
-        onPress={() => props.navigateToPayments()}
+        onPress={() => props.navigateToInfo()}
       />
       <Text
         style={{

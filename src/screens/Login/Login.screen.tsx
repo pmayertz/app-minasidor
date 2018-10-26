@@ -4,11 +4,11 @@ import { View, Image } from 'react-native'
 import TextInput from '../../components/TextInput'
 import Button from '../../components/Button'
 import styles from './styles'
-import strings from '../../resources/strings'
+import strings from '../../shared/constants/strings'
 import Loading from '../../components/Loading'
 import ErrorDialog, { IError } from '../../components/ErrorDialog'
 import AvoidKeyboard from '../../components/AvoidKeyboard'
-import Text from '../../components/Text';
+import Text from '../../components/Text'
 
 interface ILoginContainerProps {
   onTextChange(personalNumber: string): void
@@ -21,7 +21,11 @@ interface ILoginContainerProps {
 
 export default (props: ILoginContainerProps) => (
   <View style={{ flex: 1 }}>
-    <Container>
+    <Container
+      style={{
+        backgroundColor: '#007D46'
+      }}
+    >
       <AvoidKeyboard>
         <Image
           style={{ width: 300, height: 300, alignSelf: 'center' }}
