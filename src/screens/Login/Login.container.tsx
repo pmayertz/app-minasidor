@@ -6,7 +6,7 @@ import {
   Linking,
   Alert
 } from 'react-native'
-import { BANKID_RESPONSE_KEY } from '../../resources/communication'
+import { BANKID_RESPONSE_KEY } from '../../shared/constants/communication'
 import BankID from '../../BankID'
 import { NavigationScreenProp } from 'react-navigation'
 import * as Rest from '../../Rest'
