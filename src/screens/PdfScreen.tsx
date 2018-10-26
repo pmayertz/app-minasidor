@@ -1,14 +1,16 @@
 import React from 'react'
-import { StyleSheet, ScrollView } from 'react-native'
+import { StyleSheet, ScrollView, View, Platform } from 'react-native'
 import { NavigationScreenProp } from 'react-navigation'
-import PdfView from '../components/PdfView';
+import PdfView from '../components/PdfView'
+import ErrorDialog, { IError } from '../components/ErrorDialog'
 
 interface IReviewProps {
-  navigation: NavigationScreenProp<{}, {}>
+  navigation: NavigationScreenProp<{}, { source: object }>
 }
 
 interface IReviewState {
   source: object
+  error?: IError
 }
 
 export default class Review extends React.Component<
@@ -18,22 +20,31 @@ export default class Review extends React.Component<
   constructor(props: IReviewProps) {
     super(props)
     this.state = {
-      source: props.navigation.getParam('source', null)
+      source: props.navigation.getParam('source', {})
     }
   }
 
   public render() {
     return (
-      <ScrollView style={styles.container} keyboardShouldPersistTaps="always">
-        <PdfView source={this.state.source} />
-      </ScrollView>
+      <View style={{ flex: 1 }}>
+        <PdfView
+          source={this.state.source}
+          onError={() =>
+            this.setState({
+              error: {
+                title: 'Fel vid hämtning av PDF',
+                subtitle:
+                  'Ett fel har uppstått vid hämtning av PDF, var god försök igen',
+                onClose: () =>
+                  this.setState({
+                    error: undefined
+                  })
+              }
+            })
+          }
+        />
+        <ErrorDialog />
+      </View>
     )
   }
-
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  }
-})
