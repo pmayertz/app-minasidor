@@ -9,7 +9,7 @@ interface IPaymentsScreenProps {
 }
 
 const EmptyList = (props: { message: string }) => (
-  <Card style={{ padding: 16, marginBottom: 16 }}>
+  <Card style={{ padding: 16, marginBottom: 16, marginTop: 8 }}>
     <Text style={{ fontSize: 18 }}>{props.message}</Text>
   </Card>
 )

@@ -19,7 +19,10 @@ const defaultStyles = StyleSheet.create({
     paddingVertical: 16,
     width: '100%',
     borderRadius: 8,
-    elevation: 1
+    elevation: 4,
+    shadowOffset: { width: 1, height: 1 },
+    shadowColor: '#000000',
+    shadowOpacity: 0.2
   },
   text: {
     color: '#EEEEEE',

@@ -9,7 +9,7 @@ interface IContainerProps {
 const defaultStyles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 16,
+    paddingHorizontal: 8,
     backgroundColor: '#DCE7F1'
   }
 })
