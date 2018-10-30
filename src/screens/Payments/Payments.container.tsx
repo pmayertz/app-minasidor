@@ -92,7 +92,7 @@ export default class PaymentsContainer extends React.Component<IProps, IState> {
     Rest.getPdf(specification)
       .then((path: string) => {
         this.props.navigation.navigate('PdfScreen', {
-          source: { uri: `file://${path}` }
+          source: { uri: `file://${path}`, cache: true }
         })
       })
       .catch((error: Error) => {

@@ -1,6 +1,5 @@
 import React from 'react'
 import { View, StyleSheet, Dimensions } from 'react-native'
-
 import Pdf from 'react-native-pdf'
 
 interface IPdfProps {
@@ -28,7 +27,6 @@ const styles = StyleSheet.create({
   pdf: {
     flex: 1,
     backgroundColor: '#DCE7F1',
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height
+    width: Dimensions.get('window').width
   }
 })

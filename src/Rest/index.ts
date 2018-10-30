@@ -16,15 +16,13 @@ if (__DEV__) {
   SKICKAEPOSTREST_URL = CONSTANTS.TEST_URL.SKICKAEPOSTREST
 }
 
-let SESSION_COOKIES = [];
+let sessionCookies: Array<[string, string]> = [];
 
 export function login() {
-  console.log('login()')
   return fetch(AUTH_URL, {
     credentials: 'include'
   })
     .then(response => {
-      console.log(response)
       if (response.status !== 200) {
         return logout()
           .then(logoutResponse => logoutResponse)
@@ -32,7 +30,7 @@ export function login() {
             throw new Error(error)
           })
       }
-      SESSION_COOKIES = SESSION_COOKIES.concat(get_set_cookies(response.headers))
+      sessionCookies = sessionCookies.concat(get_set_cookies(response.headers))
       return response.json()
     })
     .catch(error => {
@@ -42,12 +40,10 @@ export function login() {
 }
 
 export function logout() {
-  console.log('logout()')
   return fetch(`${MISIREST_URL}/logout`, {
     credentials: 'include'
   })
     .then(response => {
-      console.log(response)
       if (response.status !== 200) {
         throw new Error(`logout ${response.status}: ${response.text}`)
       }
@@ -60,7 +56,6 @@ export function logout() {
 }
 
 export function postFormResponse(personalNumber: string) {
-  console.log('postFormResponse()')
   return fetch(AUTH_URL, {
     method: 'POST',
     credentials: 'include',
@@ -76,7 +71,6 @@ export function postFormResponse(personalNumber: string) {
     })
   })
     .then(response => {
-      console.log(response)
       if (response.status !== 200) {
         return logout()
           .then(logoutResponse => logoutResponse)
@@ -84,7 +78,7 @@ export function postFormResponse(personalNumber: string) {
             throw new Error(error)
           })
       }
-      SESSION_COOKIES = SESSION_COOKIES.concat(get_set_cookies(response.headers))
+      sessionCookies = sessionCookies.concat(get_set_cookies(response.headers))
       return response.json()
     })
     .catch(error => {
@@ -94,7 +88,6 @@ export function postFormResponse(personalNumber: string) {
 }
 
 export function postLaunchResponse() {
-  console.log('postLaunchResponse()')
   return fetch(AUTH_URL, {
     method: 'POST',
     credentials: 'include',
@@ -104,7 +97,6 @@ export function postLaunchResponse() {
     })
   })
     .then(response => {
-      console.log(response)
       if (response.status !== 200) {
         return logout()
           .then(logoutResponse => logoutResponse)
@@ -112,7 +104,7 @@ export function postLaunchResponse() {
             throw new Error(error)
           })
       }
-      SESSION_COOKIES = SESSION_COOKIES.concat(get_set_cookies(response.headers))
+      sessionCookies = sessionCookies.concat(get_set_cookies(response.headers))
       return response.json()
     })
     .catch(error => {
@@ -122,12 +114,10 @@ export function postLaunchResponse() {
 }
 
 export function getUtbetalningar() {
-  console.log('getUtbetalningar()')
   return fetch(`${UTBREST_URL}/utbetalningar?${KANAL}`, {
     credentials: 'include'
   })
     .then(response => {
-      console.log(response)
       if (response.status !== 200) {
         throw new Error(`getUtbetalningar ${response.status}: ${response.text}`)
       }
@@ -146,7 +136,6 @@ export function getUtbetalningar() {
 }
 
 export function skickaEpost(score: number, meddelande: string) {
-  console.log('skickaEpost()')
   const email = {
     meddelandeSomSkickas: `${score}, ${meddelande}`,
     mottagare: 'skickaepost.app.omrade.val',
@@ -172,19 +161,20 @@ export class AuthenticationError extends Error {
 }
 
 export function getPdf(specification: number) {
-  console.log('getPdf()')
-  const cookiesToSend = SESSION_COOKIES
+  const cookiesToSend = sessionCookies
   .map(cookie => {
-    const parsed_cookie = SetCookieParser.parse(cookie)
-    return `${parsed_cookie.name}=${parsed_cookie.value}`
+    const parsedCookie = SetCookieParser.parse(cookie)
+    return `${parsedCookie.name}=${parsedCookie.value}`
   })
   .join('; ')
 
   const url = `${UTBREST_URL}/utbetalningar/specifikation?id=${specification}&${KANAL}`
+  console.log('get PDF from: ' + url)
   return RNFetchBlob.config({ fileCache: true })
     .fetch('GET', url, {Cookie: cookiesToSend})
-    .then(res => {
-      return Promise.resolve(res.path())
+    .then(response => {
+      console.log('PDF RESPONSE: ' + response)
+      return Promise.resolve(response.path())
     })
 }
 

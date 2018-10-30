@@ -43,7 +43,7 @@ export default class Review extends React.Component<
             })
           }
         />
-        <ErrorDialog />
+        <ErrorDialog error={this.state.error}/>
       </View>
     )
   }

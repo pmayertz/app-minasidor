@@ -1,11 +1,11 @@
 interface IPayment {
-   nettobelopp: number
-   datum: string
-   utbetalningsfamilj: string
-   utbetalningsfamiljKlartext: string
-   specifikation: number
-   status: string
-   detaljer: IPaymentDetail[]
+  nettobelopp: number
+  datum: string
+  utbetalningsfamilj: string
+  utbetalningsfamiljKlartext: string
+  specifikation: number
+  status: string
+  detaljer: IPaymentDetail[]
 }
 
 interface IPaymentDetail {

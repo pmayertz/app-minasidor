@@ -1,5 +1,5 @@
 import PaymentFilter from '../PaymentFilter'
-import PaymentsMock from '../../../resources/mocks/Payments.mock'
+import PaymentsMock from '../../mocks/Payments.mock'
 
 let payments: IPayments
 const emptyPayments = {

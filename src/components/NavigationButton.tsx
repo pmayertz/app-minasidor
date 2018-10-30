@@ -30,7 +30,6 @@ const defaultStyles = StyleSheet.create({
   text: {
     fontWeight: '500',
     fontSize: 18,
-    marginLeft: 16
   }
 })
 
@@ -39,7 +38,6 @@ export default ({
   icon,
   onPress,
   style,
-  fontStyle
 }: INavigationButtonProps) => (
   <TouchableOpacity
     onPress={onPress}
@@ -47,7 +45,7 @@ export default ({
     activeOpacity={0.8}
   >
     <View style={{ flexDirection: 'row', alignItems: 'flex-end' }}>
-      <Icon name={icon} size={50} />
+      <Icon name={icon} size={50} style={{ marginRight: 16 }}/>
       <Text style={defaultStyles.text}>{title}</Text>
       <Icon
         name="chevron-right"

@@ -114,11 +114,11 @@ export default {
           delforman: '',
           delformanKlartext: 'Föräldrapenning',
           beloppstyp: '',
-          
+
           ersattningAvdrag: 'Föräldrapenning'
         }
       ]
-    },
+    }
   ],
   preliminara: [
     {
